@@ -5,6 +5,14 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:config/spring-application.xml</param-value>
 	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
 	<filter>
 		<filter-name>encode</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -17,12 +25,45 @@
 		<filter-name>encode</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
-	<listener>
-		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+	<!-- druid监控 -->
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 进入druid监控页面 -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		<init-param>
+			<!-- 允许清空统计数据 -->
+			<param-name>resetEnable</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<init-param>
+			<!-- 用户名 -->
+			<param-name>Username</param-name>
+			<param-value>admin</param-value>
+		</init-param>
+		<init-param>
+			<!-- 密码 -->
+			<param-name>Password</param-name>
+			<param-value>admin</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+
 	<servlet>
 		<servlet-name>springmvc-web</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -36,15 +77,17 @@
 		<servlet-name>springmvc-web</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	<welcome-file-list>
-		<welcome-file>index.jsp</welcome-file>
-	</welcome-file-list>
-	
+
 	<!-- session过期时间单位分钟 -->
 	<session-config>
 		<session-timeout>15</session-timeout>
 	</session-config>
-	
+
+    <!-- 首页 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/common/404.jsp</location>
