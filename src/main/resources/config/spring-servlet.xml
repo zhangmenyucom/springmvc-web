@@ -10,7 +10,9 @@
 		http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<context:component-scan base-package="com.taylor.action" />
+	<context:component-scan base-package="com.taylor.action">
+	 <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 	<!-- 启动Spring MVC的注解功能，完成请求和注解POJO的映射 -->
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />

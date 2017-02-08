@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.taylor.dao.TestDao;
 import com.taylor.entity.Test;
@@ -15,6 +16,7 @@ public class TestServiceImpl implements TestService{
 	private TestDao testDao;
 	
 	@Override
+	@Transactional
 	public List<Test> queryTest(Test test){
 		return testDao.select(test);
 	}

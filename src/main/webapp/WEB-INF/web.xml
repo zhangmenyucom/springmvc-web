@@ -39,6 +39,12 @@
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
+	<!-- session过期时间单位分钟 -->
+	<session-config>
+		<session-timeout>15</session-timeout>
+	</session-config>
+	
 	<error-page>
 		<exception-type>java.lang.Exception</exception-type>
 		<location>/common/404.jsp</location>
