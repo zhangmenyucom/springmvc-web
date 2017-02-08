@@ -46,16 +46,16 @@
 		<init-param>
 			<!-- 允许清空统计数据 -->
 			<param-name>resetEnable</param-name>
-			<param-value>true</param-value>
+			<param-value>false</param-value>
 		</init-param>
 		<init-param>
 			<!-- 用户名 -->
-			<param-name>Username</param-name>
+			<param-name>loginUsername</param-name>
 			<param-value>admin</param-value>
 		</init-param>
 		<init-param>
 			<!-- 密码 -->
-			<param-name>Password</param-name>
+			<param-name>loginPassword</param-name>
 			<param-value>admin</param-value>
 		</init-param>
 	</servlet>
@@ -83,7 +83,7 @@
 		<session-timeout>15</session-timeout>
 	</session-config>
 
-    <!-- 首页 -->
+	<!-- 首页 -->
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
