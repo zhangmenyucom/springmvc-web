@@ -6,20 +6,16 @@
           http://www.springframework.org/schema/context/spring-context-3.0.xsd  
           http://www.springframework.org/schema/aop
           http://www.springframework.org/schema/aop/spring-aop.xsd">
-
 	<!-- 自动扫描bean，把作了注解的类转换为bean -->
 	<context:component-scan base-package="com.taylor">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
-
 	<!-- mybatis相关 -->
 	<import resource="jdbc-context.xml" />
 
 	<!-- swagger相关 -->
 	<bean class="com.taylor.config.SwaggerConfig" />
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
-	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为10MB -->
