@@ -14,6 +14,9 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
+	<!-- swagger相关 -->
+	<bean class="com.taylor.config.SwaggerConfig" />
+	
 	<mvc:default-servlet-handler />
 	<mvc:annotation-driven />
 	

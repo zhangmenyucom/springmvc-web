@@ -241,7 +241,7 @@
 					]]>
 				</jdbc.url>
 				<jdbc.username>root</jdbc.username>
-				<jdbc.password>ilovemysql^^^</jdbc.password>
+				<jdbc.password>110110</jdbc.password>
 				<war.dir>D:/Javaee/mypackage</war.dir>
 			</properties>
 		</profile>

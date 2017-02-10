@@ -11,12 +11,10 @@
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
+	
 	<!-- mybatis相关 -->
 	<import resource="jdbc-context.xml" />
-
-	<!-- swagger相关 -->
-	<bean class="com.taylor.config.SwaggerConfig" />
-
+	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为10MB -->
 		<property name="maxUploadSize">
