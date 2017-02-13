@@ -35,7 +35,7 @@
 		</plugin>
 		
 		<plugin interceptor="com.google.code.shardbatis.plugin.ShardPlugin">
-			<property name="shardingConfig" value="shard_config.xml" />
+			<property name="shardingConfig" value="config/shard_config.xml" />
 		</plugin>
 	</plugins>
 </configuration>
