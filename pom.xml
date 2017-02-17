@@ -147,6 +147,10 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.5</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>web-demo</finalName>
@@ -235,7 +239,7 @@
 					]]>
 				</jdbc.url>
 				<jdbc.username>root</jdbc.username>
-				<jdbc.password>110110</jdbc.password>
+				<jdbc.password>ilovemysql^^^</jdbc.password>
 				<war.dir>D:/Javaee/mypackage</war.dir>
 			</properties>
 		</profile>

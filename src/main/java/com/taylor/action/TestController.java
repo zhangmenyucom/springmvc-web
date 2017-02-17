@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
+import com.taylor.dto.OrderSearchDto;
 import com.taylor.entity.Order;
 import com.taylor.entity.Test;
 import com.taylor.service.OrderService;
@@ -38,5 +41,17 @@ public class TestController extends BaseAction {
         Order order = new Order();
         order.setMerchantId(1129L);
         return orderService.queryOrderList(order);
+    }
+    
+    @ResponseBody
+    @RequestMapping("/order_list_page")
+    public PageInfo<Order> queryOrderListPage(HttpServletRequest request, HttpServletResponse response) {
+    	OrderSearchDto order = new OrderSearchDto();
+    	order.setMerchantId(1129L);
+    	order.setPageSize(5);
+    	order.setCurrenPage(1);
+    	Page<Order> page=orderService.queryOrderListWithPage(order);
+    	PageInfo<Order> info = new PageInfo<Order>(page);
+    	return info;
     }
 }

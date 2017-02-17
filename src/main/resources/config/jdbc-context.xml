@@ -49,17 +49,6 @@
 		<property name="typeAliasesPackage" value="com.taylor.entity" />
 		<!-- 配置扫描Mapper XML的位置 -->
 		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml" />
-		<property name="plugins">
-			<bean class="com.github.pagehelper.PageHelper">
-				<property name="properties">
-					<value>
-						dialect=mysql
-						reasonable=true
-						pageSizeZero=true
-					</value>
-				</property>
-			</bean>
-		</property>
 	</bean>
 
 	<bean id="druid-stat-interceptor" class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor" />

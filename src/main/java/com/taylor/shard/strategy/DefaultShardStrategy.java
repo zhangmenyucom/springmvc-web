@@ -1,7 +1,9 @@
 package com.taylor.shard.strategy;
 
 import java.util.Map;
+
 import com.google.code.shardbatis.strategy.ShardStrategy;
+import com.taylor.utils.JacksonUtil;
 import com.taylor.utils.StringUtils;
 
 public class DefaultShardStrategy implements ShardStrategy {
@@ -100,6 +102,8 @@ public class DefaultShardStrategy implements ShardStrategy {
 			} else {
 				return obj;
 			}
+		}else if(params instanceof Object){
+			return JacksonUtil.getInstance().bean2Bean(params, BaseShardDomain.class);
 		}
 		return params;
 	}
