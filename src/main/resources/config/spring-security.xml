@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<debug />
+	<http security="none" pattern="/login.jsp" />
+	<http security="none" pattern="/static/**" />
+	<http use-expressions="true" auto-config="true">
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+
+		<!-- 同一时间内允许同一账号保持4个在线,error-if-maximum-exceeded="true"表示第第四个以后的登不进去 -->
+		<session-management>
+			<concurrency-control max-sessions="4" error-if-maximum-exceeded="true" />
+		</session-management>
+		<csrf disabled="true" />
+		<form-login login-page="/login.jsp" authentication-failure-handler-ref="authenticationFailureHandlerImpl" authentication-success-handler-ref="authenticationSuccessHandlerImpl" />
+		<logout logout-success-url="/logout.jsp" logout-url="logout" invalidate-session="true" delete-cookies="JSESSIONID" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userService">
+			<password-encoder hash="bcrypt" />
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- 认证成功调用 主要实现AuthenticationSuccessHandler这个类的onAuthenticationSuccess方法 -->
+	<bean id="authenticationSuccessHandlerImpl" class="com.**.utils.springsecurity.AuthenticationSuccessHandlerImpl">
+		<property name="url" value="/welcome.jsp" />
+	</bean>
+
+	<!-- 认证失败调用 主要实现AuthenticationFailureHandler类的onAuthenticationFailure -->
+	<bean id="authenticationFailureHandlerImpl" class="com.**.utils.springsecurity.AuthenticationFailureHandlerImpl">
+		<property name="errorUrl" value="/error.jsp" />
+	</bean>
+</beans> 
