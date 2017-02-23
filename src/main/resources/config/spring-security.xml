@@ -2,35 +2,92 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:security="http://www.springframework.org/schema/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-	<debug />
-	<http security="none" pattern="/login.jsp" />
-	<http security="none" pattern="/static/**" />
-	<http use-expressions="true" auto-config="true">
-		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-		<!-- 同一时间内允许同一账号保持4个在线,error-if-maximum-exceeded="true"表示第第四个以后的登不进去 -->
-		<session-management>
-			<concurrency-control max-sessions="4" error-if-maximum-exceeded="true" />
-		</session-management>
-		<csrf disabled="true" />
-		<form-login login-page="/login.jsp" authentication-failure-handler-ref="authenticationFailureHandlerImpl" authentication-success-handler-ref="authenticationSuccessHandlerImpl" />
-		<logout logout-success-url="/logout.jsp" logout-url="logout" invalidate-session="true" delete-cookies="JSESSIONID" />
-	</http>
+	<!-- use annotation -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.taylor.security"/>
 
-	<authentication-manager>
-		<authentication-provider user-service-ref="userService">
-			<password-encoder hash="bcrypt" />
-		</authentication-provider>
-	</authentication-manager>
+	<!-- 无需认证的url -->
+	<security:http pattern="/denied.html" security="none" />
+	<security:http pattern="/favicon.ico" security="none" />
+	<security:http pattern="/login/index" security="none" />
+	<security:http pattern="/logout" security="none" />
+	<security:http pattern="/login.htm" security="none" />
+	<security:http pattern="/css/**" security="none" />
+	<security:http pattern="/js/**" security="none" />
+	
+	<security:http use-expressions="false" auto-config="false" create-session="stateless" entry-point-ref="unauthorizedEntryPoint">
+		<!-- FILTER_SECURITY_INTERCEPTOR FORM_LOGIN_FILTER -->
+		<security:access-denied-handler ref="accessDeniedHandler" />
+		<security:custom-filter ref="authenticationProcessingFilter" position="BASIC_AUTH_FILTER" />
+		<security:custom-filter ref="securityFilterInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
+	</security:http>
 
-	<!-- 认证成功调用 主要实现AuthenticationSuccessHandler这个类的onAuthenticationSuccess方法 -->
-	<bean id="authenticationSuccessHandlerImpl" class="com.**.utils.springsecurity.AuthenticationSuccessHandlerImpl">
-		<property name="url" value="/welcome.jsp" />
+	<!-- 未授权异常处理类 -->
+	<bean id="unauthorizedEntryPoint" class="com.taylor.security.UnauthorizedEntryPoint" />
+
+	<!-- 用户资源访问拒绝处理器 -->
+	<bean id="accessDeniedHandler" class="com.taylor.security.DefaultAccessDeniedHandler">
+		<property name="accessDeniedUrl" value="/denied.html" />
 	</bean>
 
-	<!-- 认证失败调用 主要实现AuthenticationFailureHandler类的onAuthenticationFailure -->
-	<bean id="authenticationFailureHandlerImpl" class="com.**.utils.springsecurity.AuthenticationFailureHandlerImpl">
-		<property name="errorUrl" value="/error.jsp" />
+	<!-- 访问控制验证器Authority -->
+	<bean id="securityFilterInterceptor" class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<property name="authenticationManager" ref="weimobAuthenticationManager" />
+		<property name="accessDecisionManager" ref="weimobAccessDecisionManager" />
+		<property name="securityMetadataSource" ref="securityMetadataSource" />
 	</bean>
-</beans> 
+
+	<!-- 权限最终决策管理器 -->
+	<bean id="weimobAccessDecisionManager" class="com.taylor.security.DefaultAccessDecisionManager" />
+
+	<!-- 权限认证管理器 -->
+	<security:authentication-manager alias="weimobAuthenticationManager">
+		<security:authentication-provider ref="weimobAuthenticationProvider" />
+	</security:authentication-manager>
+
+	<!-- 用户权限提供 器，加载用户权限 -->
+	<bean id="weimobAuthenticationProvider" class="com.taylor.security.SecurityAuthenticationProvider">
+		<property name="userAuthDetailsService" ref="simpleUserAuthDetailsService" />
+	</bean>
+
+	<!-- 用户权限信息加载服务 -->
+	<bean id="simpleUserAuthDetailsService" class="com.taylor.security.UserAuthDetailsServiceImpl">
+		<property name="userAuthService" ref="o2oUserAuthService" />
+	</bean>
+	<!-- 用户权限服务 -->
+	<bean id="o2oUserAuthService" class="com.taylor.security.UserAuthServiceImpl">
+		<property name="accountManager" ref="accountManager" />
+		<property name="accountStoreRelService" ref="o2oAccountStoreRelService" />
+		<property name="resourceSetService" ref="resourceSetService" />
+	</bean>
+
+	<!-- 动态加载url权限定义 -->
+	<bean id="securityMetadataSource" class="com.taylor.security.DefaultFilterInvocationSecurityMetadataSource">
+		<constructor-arg type="java.util.LinkedHashMap" ref="securityRequestMapFactoryBean" />
+	</bean>
+	<bean id="securityRequestMapFactoryBean" class="com.taylor.security.SecurityMetadataSource" />
+
+	<!-- 加载用户权限，并set进SecurityContext -->
+	<bean class="com.taylor.security.AuthenticationCheckFilter" id="authenticationProcessingFilter">
+		<property name="authenticationManager" ref="weimobAuthenticationManager" />
+		<property name="interval" value="7200000" />
+		<property name="redisClient" ref="weimobSimpleRedisClient" />
+		<property name="wechatExcludePath">
+			<set>
+				<value>.*/merchant/[0-9]*/authorization</value>
+				<value>.*/logout</value>
+				<value>.*/main</value>
+				<value>.*/main/[0-9]*</value>
+				<value>.*/favicon.ico</value>
+				<value>.*/notice/getunreadcount</value>
+				<value>.*/selectWeChatAccount</value>
+			</set>
+		</property>
+	</bean>
+	
+	<!-- 授权认证接口实现 -->
+	<bean id="defaultGrantedAuthenticationService" class="com.taylor.security.SimpleGrantedAuthenticationService" />
+
+</beans>
