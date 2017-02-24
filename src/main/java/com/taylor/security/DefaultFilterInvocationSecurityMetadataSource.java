@@ -9,15 +9,12 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import lombok.extern.log4j.Log4j2;
-
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityConfig;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 
-@Log4j2
 public class DefaultFilterInvocationSecurityMetadataSource  implements FilterInvocationSecurityMetadataSource {
 	private final Map<RequestMatcher, Collection<ConfigAttribute>> requestMap;
 
@@ -34,7 +31,6 @@ public class DefaultFilterInvocationSecurityMetadataSource  implements FilterInv
             LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>> requestMap) {
 
         if(requestMap == null){
-        	log.warn("request map is null!");
         	requestMap = new LinkedHashMap<RequestMatcher, Collection<ConfigAttribute>>();
         }
         

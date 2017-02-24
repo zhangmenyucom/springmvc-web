@@ -1,4 +1,4 @@
-package com.weimob.common.web.security.notification;
+package com.taylor.security;
 
 /**
  * 用户权限变更通知

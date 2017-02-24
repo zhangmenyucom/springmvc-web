@@ -1,4 +1,4 @@
-package com.weimob.common.web.security.exceptions;
+package com.taylor.security;
 
 /**
  * 未找到用户认证信息异常

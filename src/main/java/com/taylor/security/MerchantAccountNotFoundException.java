@@ -1,4 +1,4 @@
-package com.weimob.common.web.security.exceptions;
+package com.taylor.security;
 
 import org.springframework.security.core.AuthenticationException;
 

@@ -10,48 +10,36 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
-import com.weimob.common.web.security.constants.SecurityAuthConstants;
-import com.weimob.common.web.util.HierarchyPatternMatcher;
-
 /**
  * 用户权限决定管理器
+ * 
  * @author Miao
  *
  */
 public class DefaultAccessDecisionManager implements AccessDecisionManager {
 
 	@Override
-	public void decide(Authentication authentication, Object object,
-			Collection<ConfigAttribute> configAttributes)
-			throws AccessDeniedException, InsufficientAuthenticationException {
+	public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
 		if (configAttributes == null) {
 			return;
 		}
-		
-		MerchantUserAuthenticationToken merchantUserAuthenticationToken = 
-				(MerchantUserAuthenticationToken) authentication;
-//		if(merchantUserAuthenticationToken.isSuperAdmin()){
-//			//超级管理员
-//			return ;
-//		}
-		
-		// 所请求的资源拥有的权限(一个资源对多个权限)
+
+		MerchantUserAuthenticationToken merchantUserAuthenticationToken = (MerchantUserAuthenticationToken) authentication;
 		Iterator<ConfigAttribute> iterator = configAttributes.iterator();
 
-		while (iterator.hasNext()) {
+/*		while (iterator.hasNext()) {
 			ConfigAttribute configAttribute = iterator.next();
 			// 访问所请求资源所需要的权限
 			String needPermission = configAttribute.getAttribute();
 			// 用户所拥有的权限authentication
 			for (GrantedAuthority ga : authentication.getAuthorities()) {
-				if(HierarchyPatternMatcher.match(ga.getAuthority(), needPermission, 
-						SecurityAuthConstants.USER_AUTH_CODE_SPLITTER)){
+				if (HierarchyPatternMatcher.match(ga.getAuthority(), needPermission, SecurityAuthConstants.USER_AUTH_CODE_SPLITTER)) {
 					return;
 				}
 			}
 
 		}
-
+*/
 		throw new AccessDeniedException(" No Access Dendied ");
 	}
 
@@ -62,7 +50,7 @@ public class DefaultAccessDecisionManager implements AccessDecisionManager {
 
 	@Override
 	public boolean supports(Class<?> clazz) {
-	    return true;  
+		return true;
 	}
 
 }

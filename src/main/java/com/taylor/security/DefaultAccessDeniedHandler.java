@@ -1,4 +1,4 @@
-package com.weimob.common.web.security.exceptionhandler;
+package com.taylor.security;
 
 import java.io.IOException;
 
@@ -11,14 +11,14 @@ import org.springframework.security.web.access.AccessDeniedHandler;
 
 /**
  * 用户资源访问拒绝处理器
+ * 
  * @author Miao
  *
  */
-public class DefaultAccessDeniedHandler implements AccessDeniedHandler{
+public class DefaultAccessDeniedHandler implements AccessDeniedHandler {
 
 	/**
-	 * 重定向url
-	 * 不包含ContextPath
+	 * 重定向url 不包含ContextPath
 	 */
 	private String accessDeniedUrl;
 
@@ -31,11 +31,8 @@ public class DefaultAccessDeniedHandler implements AccessDeniedHandler{
 	}
 
 	@Override
-	public void handle(HttpServletRequest request,
-			HttpServletResponse response,
-			AccessDeniedException accessDeniedException) throws IOException,
-			ServletException {
-		response.sendRedirect(request.getContextPath()+accessDeniedUrl);
+	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
+		response.sendRedirect(request.getContextPath() + accessDeniedUrl);
 	}
 
 }

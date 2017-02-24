@@ -18,7 +18,6 @@
 	<security:http pattern="/js/**" security="none" />
 	
 	<security:http use-expressions="false" auto-config="false" create-session="stateless" entry-point-ref="unauthorizedEntryPoint">
-		<!-- FILTER_SECURITY_INTERCEPTOR FORM_LOGIN_FILTER -->
 		<security:access-denied-handler ref="accessDeniedHandler" />
 		<security:custom-filter ref="authenticationProcessingFilter" position="BASIC_AUTH_FILTER" />
 		<security:custom-filter ref="securityFilterInterceptor" before="FILTER_SECURITY_INTERCEPTOR" />
