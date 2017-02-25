@@ -13,7 +13,7 @@
     <caption>All Packages and Files<div style='font-size: smaller'>springmvc-web\src</div></caption>
     <tr>
       <th style='cursor: col-resize' onclick='showHideAllFiles()'>Packages: 5</th>
-      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 7</th>
+      <th onclick='location.reload()' style='cursor: n-resize' title='Click on the title for each metric to sort by size (total number of line segments, paths, or fields).'>Files: 16</th>
       <th onclick='sortTables(1)' style='cursor: n-resize' title='Measures how much of the executable production code was exercised by tests.
 An executable line of code contains one or more executable segments.
 The percentages are calculated as 100*NE/NS, where NS is the number of segments and NE the number of executed segments.'>Line</th>
@@ -28,13 +28,13 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
       <td>
         <table width='100%'>
           <tr>
-            <td class='file class'><a target='_blank' href='com/taylor/action/BaseAction.html'>BaseAction.java</a>     </td>
+            <td class='file class'><a target='_blank' href='com/taylor/action/BaseAction.html'>BaseAction.java</a>         </td>
             <td style='background-color:#ff0000' title='Line segments: 0/2'>0%</td>
             <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
             <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
           </tr>
           <tr>
-            <td class='file class'><a target='_blank' href='com/taylor/action/TestController.html'>TestController.java</a> </td>
+            <td class='file class'><a target='_blank' href='com/taylor/action/TestController.html'>TestController.java</a>     </td>
             <td style='background-color:#ff0000' title='Line segments: 0/3'>0%</td>
             <td style='background-color:#ff0000' title='Paths: 0/2'>0%</td>
             <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
@@ -50,7 +50,7 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
       <td>
         <table width='100%'>
           <tr>
-            <td class='file interface'><a target='_blank' href='com/taylor/dao/TestDao.html'>TestDao.java</a>        </td>
+            <td class='file interface'><a target='_blank' href='com/taylor/dao/TestDao.html'>TestDao.java</a>            </td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
@@ -66,65 +66,119 @@ The percentages are calculated as 100*NFE/NF, where NF is the number of non-fina
       <td>
         <table width='100%'>
           <tr>
-            <td class='file class'><a target='_blank' href='com/taylor/jmock/MyObject.html'>MyObject.java</a>       </td>
+            <td class='file class'><a target='_blank' href='com/taylor/jmock/MyObject.html'>MyObject.java</a>           </td>
             <td style='background-color:#ff0000' title='Line segments: 0/2'>0%</td>
             <td style='background-color:#ff0000' title='Paths: 0/2'>0%</td>
             <td class='nocode'>N/A</td>
           </tr>
           <tr>
-            <td class='file class'><a target='_blank' href='com/taylor/jmock/TestJmoc.html'>TestJmoc.java</a>       </td>
-            <td style='background-color:#24db00' title='Line segments: 6/7'>86%</td>
+            <td class='file class'><a target='_blank' href='com/taylor/jmock/TestJmoc.html'>TestJmoc.java</a>           </td>
+            <td style='background-color:#20df00' title='Line segments: 7/8'>88%</td>
             <td style='background-color:#7f8000' title='Paths: 1/2'>50%</td>
             <td style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
           </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/taylor/jmock/TestUnit.html'>TestUnit.java</a>           </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/1'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+          </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#55aa00' title='Line segments: 6/9'>67%</td>
-      <td class='pt' style='background-color:#bf4000' title='Paths: 1/4'>25%</td>
-      <td class='pt' style='background-color:#00ff00' title='Fields: 1/1'>100%</td>
+      <td class='pt' style='background-color:#5da200' title='Line segments: 7/11'>64%</td>
+      <td class='pt' style='background-color:#cc3300' title='Paths: 1/5'>20%</td>
+      <td class='pt' style='background-color:#7f8000' title='Fields: 1/2'>50%</td>
     </tr>
     <tr>
-      <td class='package'>com.taylor.service</td>
+      <td class='package click' onclick='showHideFiles(this)'>com.taylor.service</td>
       <td>
         <table width='100%'>
           <tr>
-            <td class='file interface'><a target='_blank' href='com/taylor/service/TestService.html'>TestService.java</a>    </td>
+            <td class='file abstractClass'><a target='_blank' href='com/taylor/service/AbstractCrudService.html'>AbstractCrudService.java</a></td>
+            <td style='background-color:#ff0000' title='Line segments: 0/48'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/22'>0%</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file interface'><a target='_blank' href='com/taylor/service/BaseDao.html'>BaseDao.java</a>            </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file abstractClass'><a target='_blank' href='com/taylor/service/BaseService.html'>BaseService.java</a>        </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/4'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/3'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+          </tr>
+          <tr>
+            <td class='file interface'><a target='_blank' href='com/taylor/service/CrudService.html'>CrudService.java</a>        </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file interface'><a target='_blank' href='com/taylor/service/ErrorCode.html'>ErrorCode.java</a>          </td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+            <td class='nocode'>N/A</td>
+          </tr>
+          <tr>
+            <td class='file class'><a target='_blank' href='com/taylor/service/ErrorCodeEntity.html'>ErrorCodeEntity.java</a>    </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/10'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/6'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/2'>0%</td>
+          </tr>
+          <tr>
+            <td class='file exception'><a target='_blank' href='com/taylor/service/ManagerException.html'>ManagerException.java</a>   </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/20'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/8'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+          </tr>
+          <tr>
+            <td class='file enum'><a target='_blank' href='com/taylor/service/RETURN_CODE.html'>RETURN_CODE.java</a>        </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/9'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/5'>0%</td>
+            <td style='background-color:#ff0000' title='Fields: 0/3'>0%</td>
+          </tr>
+          <tr>
+            <td class='file interface'><a target='_blank' href='com/taylor/service/TestService.html'>TestService.java</a>        </td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
             <td class='nocode'>N/A</td>
           </tr>
         </table>
       </td>
-      <td class='nocode'>N/A</td>
-      <td class='nocode'>N/A</td>
-      <td class='nocode'>N/A</td>
+      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/91'>0%</td>
+      <td class='pt' style='background-color:#ff0000' title='Paths: 0/44'>0%</td>
+      <td class='pt' style='background-color:#ff0000' title='Fields: 0/7'>0%</td>
     </tr>
     <tr>
       <td class='package'>com.taylor.service.impl</td>
       <td>
         <table width='100%'>
           <tr>
-            <td class='file class'><a target='_blank' href='com/taylor/service/impl/TestServiceImpl.html'>TestServiceImpl.java</a></td>
-            <td style='background-color:#ff0000' title='Line segments: 0/2'>0%</td>
-            <td style='background-color:#ff0000' title='Paths: 0/2'>0%</td>
-            <td style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+            <td class='file class'><a target='_blank' href='com/taylor/service/impl/TestServiceImpl.html'>TestServiceImpl.java</a>    </td>
+            <td style='background-color:#ff0000' title='Line segments: 0/1'>0%</td>
+            <td style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
+            <td class='nocode'>N/A</td>
           </tr>
         </table>
       </td>
-      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/2'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Paths: 0/2'>0%</td>
-      <td class='pt' style='background-color:#ff0000' title='Fields: 0/1'>0%</td>
+      <td class='pt' style='background-color:#ff0000' title='Line segments: 0/1'>0%</td>
+      <td class='pt' style='background-color:#ff0000' title='Paths: 0/1'>0%</td>
+      <td class='nocode'>N/A</td>
     </tr>
     <tr class='total'>
       <td>Total</td><td>&nbsp;</td>
-      <td class='pt' style='background-color:#9f6000' title='Line segments: 6/16'>38%</td>
-      <td class='pt' style='background-color:#e31c00' title='Paths: 1/9'>11%</td>
-      <td class='pt' style='background-color:#bf4000' title='Fields: 1/4'>25%</td>
+      <td class='pt' style='background-color:#ee1100' title='Line segments: 7/108'>6%</td>
+      <td class='pt' style='background-color:#fa0500' title='Paths: 1/53'>2%</td>
+      <td class='pt' style='background-color:#e81700' title='Fields: 1/11'>9%</td>
     </tr>
   </table>
   <p>
     <a href='http://code.google.com/p/jmockit'><img src='logo.png'></a>
-    Generated on Tue Feb 21 11:46:47 CST 2017
+    Generated on Sun Feb 26 00:10:12 GMT+08:00 2017
   </p>
 </body>
 </html>

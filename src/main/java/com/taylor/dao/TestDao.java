@@ -1,9 +1,8 @@
 package com.taylor.dao;
 
-import com.taylor.entity.Test;
+import com.taylor.common.BaseDao;
+import com.taylor.entity.TestEntity;
 
-import tk.mybatis.mapper.common.Mapper;
-
-public interface  TestDao extends Mapper<Test> {
+public interface  TestDao extends BaseDao<TestEntity,TestEntity>{
 
 }

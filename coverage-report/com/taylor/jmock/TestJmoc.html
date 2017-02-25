@@ -40,79 +40,95 @@ import org.junit.runner.RunWith;
     </tr>
     <tr>
       <td class='line'>15</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Mocked // 用@Mocked标注的对象，不需要赋值，jmockit自动mock</pre></td>
+      <td><pre class='prettyprint'>    @Mocked // 用@Mocked标注的对象，不需要赋值，jmockit自动mock</pre></td>
     </tr>
     <tr>
       <td class='line'>16</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	MyObject <span class='instance covered' title='Reads: 2 Writes: 0'>obj</span>;</pre></td>
+      <td><pre class='prettyprint'>    MyObject <span class='instance covered' title='Reads: 2 Writes: 0'>obj</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>18</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Test</pre></td>
+      <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
       <td class='line'>19</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	public void testHello() {</pre></td>
+      <td><pre class='prettyprint'>    public void testHello() {</pre></td>
     </tr>
     <tr>
       <td class='line'>20</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l20s0'>		new NonStrictExpectations() {// 录制预期模拟行为</pre></td>
+      <td><pre class='prettyprint covered' id='l20s0'>        new NonStrictExpectations() {// 录制预期模拟行为</pre></td>
     </tr>
     <tr>
       <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			{</pre></td>
+      <td><pre class='prettyprint'>            {</pre></td>
     </tr>
     <tr>
       <td class='line'>22</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l22s0'>				obj.hello("Zhangsan");</pre></td>
+      <td><pre class='prettyprint covered' id='l22s0'>                obj.hello("Zhangsan");</pre></td>
     </tr>
     <tr>
-      <td class='line'>23</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l23s0'>				returns("Hello Zhangsan");</pre></td>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='comment'>                //returns("Hello Zhangsan");</pre></td>
     </tr>
     <tr>
       <td class='line'>24</td><td>&nbsp;</td>
-      <td><pre class='comment'>				// 也可以使用：result = "Hello Zhangsan";</pre></td>
+      <td><pre class='comment'>                // 也可以使用：result = "Hello Zhangsan";</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
+      <td class='line'>25</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l25s0'>                result = "Hello Zhangsan";</pre></td>
     </tr>
     <tr>
       <td class='line'>26</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		};</pre></td>
+      <td><pre class='prettyprint'>            }</pre></td>
     </tr>
     <tr>
       <td class='line'>27</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		assertEquals("Hello Zhangsan", obj.hello("Zhangsan"));// 调用测试方法</pre></td>
+      <td><pre class='prettyprint'>        };</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l28s0'>		new Verifications() {// 验证预期Mock行为被调用</pre></td>
+      <td class='line'>28</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        for (int i = 0; i &lt; 3; i++) {</pre></td>
     </tr>
     <tr>
       <td class='line'>29</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			{</pre></td>
+      <td><pre class='prettyprint'>            assertEquals("Hello Zhangsan", obj.hello("Zhangsan"));// 调用测试方法</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l30s0'>				this.invoke(obj, "hello", "Zhangsan");</pre></td>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        }</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
+      <td class='line'>31</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l31s0'>        new Verifications() {// 验证预期Mock行为被调用 以及调用次数</pre></td>
     </tr>
     <tr>
       <td class='line'>32</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		};</pre></td>
+      <td><pre class='prettyprint'>            {</pre></td>
     </tr>
     <tr>
-      <td class='line'>33</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
+      <td class='line'>33</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l33s0'>                this.invoke(obj, "hello", "Zhangsan");</pre></td>
     </tr>
     <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
+      <td class='line'>34</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l34s0'>                times = 3;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        };</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

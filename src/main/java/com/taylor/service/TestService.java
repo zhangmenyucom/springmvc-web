@@ -1,11 +1,9 @@
 package com.taylor.service;
 
-import java.util.List;
+import com.taylor.common.CrudService;
+import com.taylor.entity.TestEntity;
 
-import com.taylor.entity.Test;
+public interface TestService  extends CrudService<TestEntity,TestEntity>{
 
-public interface TestService {
-
-	List<Test> queryTest(Test test);
 
 }

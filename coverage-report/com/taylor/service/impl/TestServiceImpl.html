@@ -18,58 +18,26 @@
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'></td><td>&nbsp;</td>
-      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import org.springframework.stereotype.Service;
 
 import com.taylor.dao.TestDao;
 import com.taylor.entity.Test;
+import com.taylor.service.AbstractCrudService;
 import com.taylor.service.TestService;
 </div><span>import ...</span></pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>13</td><td>&nbsp;</td>
+      <td class='line'>10</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@Service</pre></td>
     </tr>
     <tr>
-      <td class='line'>14</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l14s0'>public class TestServiceImpl implements TestService{</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>15</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Autowired</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>16</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private TestDao <span class='instance uncovered' title='Reads: 0 Writes: 0'>testDao</span>;</pre></td>
+      <td class='line'>11</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l11s0'>public class TestServiceImpl extends  AbstractCrudService&lt;Test, Test, TestDao> implements TestService{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>18</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Override</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Transactional</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>20</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	public List&lt;Test> queryTest(Test test){</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>21</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l21s0'>		return testDao.select(test);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>22</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
+      <td class='line'>17</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

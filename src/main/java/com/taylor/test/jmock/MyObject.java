@@ -1,4 +1,4 @@
-package com.taylor.jmock;
+package com.taylor.test.jmock;
 
 public class MyObject {
 	public String hello(String name) {

@@ -48,36 +48,36 @@ import com.taylor.service.TestService;
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>20</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@Autowired</pre></td>
+      <td><pre class='prettyprint'>    @Autowired</pre></td>
     </tr>
     <tr>
       <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
+      <td><pre class='prettyprint'>    private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>23</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@ResponseBody</pre></td>
+      <td><pre class='prettyprint'>    @ResponseBody</pre></td>
     </tr>
     <tr>
       <td class='line'>24</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	@RequestMapping("/query")</pre></td>
+      <td><pre class='prettyprint'>    @RequestMapping("/query")</pre></td>
     </tr>
     <tr>
       <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	public List&lt;Test> queryTest(Test test, HttpServletRequest request, HttpServletResponse response) {</pre></td>
+      <td><pre class='prettyprint'>    public List&lt;Test> queryTest(Test test, HttpServletRequest request, HttpServletResponse response) {</pre></td>
     </tr>
     <tr>
       <td class='line'>26</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l26s0'>	    log.debug("这只是一个测试");</pre></td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>        log.debug("这只是一个测试");</pre></td>
     </tr>
     <tr>
       <td class='line'>27</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l27s0'>		return testService.queryTest(test);</pre></td>
+      <td><pre class='prettyprint uncovered' id='l27s0'>        return testService.find(test);</pre></td>
     </tr>
     <tr>
       <td class='line'>28</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>	}</pre></td>
+      <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr>
       <td class='line'>29</td><td>&nbsp;</td>

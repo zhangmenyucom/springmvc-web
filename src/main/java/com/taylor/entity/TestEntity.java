@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Table(name="test")
-public class Test {
+public class TestEntity {
 	
 	@Id
 	private Integer id;
