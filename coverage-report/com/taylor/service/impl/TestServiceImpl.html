@@ -20,9 +20,9 @@
       <td class='line'></td><td>&nbsp;</td>
       <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import org.springframework.stereotype.Service;
 
+import com.taylor.common.AbstractCrudService;
 import com.taylor.dao.TestDao;
-import com.taylor.entity.Test;
-import com.taylor.service.AbstractCrudService;
+import com.taylor.entity.TestEntity;
 import com.taylor.service.TestService;
 </div><span>import ...</span></pre></td>
     </tr>
@@ -32,8 +32,8 @@ import com.taylor.service.TestService;
       <td><pre class='prettyprint'>@Service</pre></td>
     </tr>
     <tr>
-      <td class='line'>11</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l11s0'>public class TestServiceImpl extends  AbstractCrudService&lt;Test, Test, TestDao> implements TestService{</pre></td>
+      <td class='line'>11</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l11s0'>public class TestServiceImpl extends  AbstractCrudService&lt;TestEntity, TestEntity, TestDao> implements TestService{</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>

@@ -1,6 +1,5 @@
 package com.taylor.test.jmock;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,33 +10,32 @@ import org.springframework.test.context.support.DependencyInjectionTestExecution
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.taylor.entity.TestEntity;
 import com.taylor.service.TestService;
+import mockit.Mock;
+import mockit.MockUp;
+import mockit.Tested;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring-application.xml"})
 @TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})
 @Transactional
-public class TestUnit {
+public class TestJmoc2 {
+
     @Autowired
     private TestService testService;
 
-    @Test
-    public void testGet() {
-        TestEntity test = new TestEntity("haha");
-        Assert.assertSame(true, testService.get(test) != null);
-    }
+    @Tested
+    private MyObject myObject;
 
     @Test
-    public void TestSave() {
-        TestEntity test = new TestEntity("lisi1");
-        testService.save(test);
-        Assert.assertSame(true, test.getId()!=null);
-    }
-
-    @Test
-    public void TestQueryList() {
-        TestEntity query = new TestEntity("lisi");
-        Assert.assertSame(3, testService.find(query).size());
+    public void testGetTestMsg() {
+        new MockUp<MyObject>() {
+            @Mock
+            public String getTestMsg(Integer id) {
+                return testService.getByPrimaryKey(id).getName();
+            }
+        };
+        System.out.println(myObject.getTestMsg(2));
     }
 }
+
