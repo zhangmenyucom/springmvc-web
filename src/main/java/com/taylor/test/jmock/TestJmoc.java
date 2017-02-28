@@ -9,13 +9,12 @@ import com.taylor.service.UserService;
 
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
-import mockit.Tested;
 import mockit.Verifications;
 import mockit.integration.junit4.JMockit;
 
 @RunWith(JMockit.class)
 public class TestJmoc {
-    @Tested // 用@Mocked标注的对象，不需要赋值，jmockit自动mock
+    @Mocked // 用@Mocked标注的对象，不需要赋值，jmockit自动mock
     private MyObject obj;
 
     @Mocked

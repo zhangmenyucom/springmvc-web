@@ -24,7 +24,7 @@ public class TestUnit {
 
     @Test
     public void testGet() {
-        TestEntity test = new TestEntity("haha");
+        TestEntity test = new TestEntity("zhangmenyucom");
         Assert.assertSame(true, testService.get(test) != null);
     }
 

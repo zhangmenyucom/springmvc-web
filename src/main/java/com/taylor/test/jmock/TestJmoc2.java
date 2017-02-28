@@ -11,8 +11,12 @@ import org.springframework.test.context.transaction.TransactionalTestExecutionLi
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taylor.service.TestService;
+
+import mockit.Expectations;
+import mockit.Injectable;
 import mockit.Mock;
 import mockit.MockUp;
+import mockit.Mocked;
 import mockit.Tested;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -22,10 +26,14 @@ import mockit.Tested;
 public class TestJmoc2 {
 
     @Autowired
+    @Injectable
     private TestService testService;
 
     @Tested
     private MyObject myObject;
+    
+    @Mocked
+    private MyObject myObject2;
 
     @Test
     public void testGetTestMsg() {
@@ -35,7 +43,27 @@ public class TestJmoc2 {
                 return testService.getByPrimaryKey(id).getName();
             }
         };
-        System.out.println(myObject.getTestMsg(2));
+        System.out.println(myObject.getTestMsg(1));
+    }
+    
+    @Test
+    public void testGetTestMsg2() {
+    	
+    	new Expectations() {
+    		{
+    			myObject2.getTestMsg((Integer)any);
+    			result="haha";
+    		}
+		};
+    			 
+
+    	System.out.println(myObject2.getTestMsg(1));
+    }
+    
+    @Test
+    public void testInjectable(){
+    	myObject.getTestMsg(1);
+    	
     }
 }
 
