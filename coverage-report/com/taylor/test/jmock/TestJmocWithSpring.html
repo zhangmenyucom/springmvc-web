@@ -12,8 +12,8 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>springmvc-web\src\main\java\com\taylor\test\jmock\TestJmocWithSpring.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l1s0'>package com.taylor.test.jmock;</pre></td>
+      <td class='line'>1</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l1s0'>package com.taylor.test.jmock;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -96,20 +96,20 @@ import mockit.Verifications;
       <td><pre class='prettyprint'>    public void testGet() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>40</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l40s0'>        new NonStrictExpectations(myObject) {// 录制预期模拟行为</pre></td>
+      <td class='line'>40</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l40s0'>        new NonStrictExpectations(myObject) {// 录制预期模拟行为</pre></td>
     </tr>
     <tr>
       <td class='line'>41</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>            {</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l42s0'>                myObject.hello("zhansan");</pre></td>
+      <td class='line'>42</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l42s0'>                myObject.hello(anyString);</pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l43s0'>                result = "hello zhansan";</pre></td>
+      <td class='line'>43</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l43s0'>                result = "hello zhansan";</pre></td>
     </tr>
     <tr>
       <td class='line'>44</td><td>&nbsp;</td>

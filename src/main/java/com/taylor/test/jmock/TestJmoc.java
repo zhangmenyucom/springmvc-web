@@ -27,25 +27,28 @@ public class TestJmoc {
                 obj.hello("Zhangsan");
                 result = "Hello Zhangsan";
 
-                obj.hello("lisi");
+                obj.hello("Zhangsan");
                 result = "Hello lisi";
 
                 obj.hello("wangwu");
                 result = "Hello wangwu";
             }
         };
-        assertEquals("Hello wangwu", obj.hello("wangwu"));// 调用测试方法
-        assertEquals("Hello Zhangsan", obj.hello("Zhangsan"));// 调用测试方法
-        assertEquals("Hello lisi", obj.hello("lisi"));// 调用测试方法
+        assertEquals("Hello lisi", obj.hello("Zhangsan"));// 调用测试方法
+        assertEquals("Hello lisi", obj.hello("Zhangsan"));// 调用测试方法
+        assertEquals("Hello wangwu", obj.Hi("wangwu"));// 调用测试方法
+        
+        
+        
 
 
-        new Verifications() {// 验证预期Mock行为被调用 以及调用次数
+/*        new Verifications() {// 验证预期Mock行为被调用 以及调用次数
             {
                 this.invoke(obj, "hello", "Zhangsan");
-                this.invoke(obj, "hello", "lisi");
+                this.invoke(obj, "hello", "Zhangsan");
                 this.invoke(obj, "hello", "wangwu");
             }
-        };
+        };*/
     }
 
     @Test
@@ -57,11 +60,12 @@ public class TestJmoc {
             }
         };
         assertEquals("hello world!", userService.getMessage());
+        assertEquals("hello world!", userService.getMessage());
 
         new Verifications() {
             {
                 this.invoke(userService, "getMessage");
-                times = 1;
+                times =2;
             }
         };
     }

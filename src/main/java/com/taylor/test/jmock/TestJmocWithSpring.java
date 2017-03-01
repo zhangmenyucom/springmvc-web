@@ -4,11 +4,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.taylor.entity.TestEntity;
 import com.taylor.service.TestService;
@@ -21,8 +18,7 @@ import mockit.Verifications;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring-application.xml"})
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})
-@Transactional
+@TransactionConfiguration
 public class TestJmocWithSpring {
 
     @Autowired
@@ -39,7 +35,7 @@ public class TestJmocWithSpring {
     public void testGet() {
         new NonStrictExpectations(myObject) {// 录制预期模拟行为
             {
-                myObject.hello("zhansan");
+                myObject.hello(anyString);
                 result = "hello zhansan";
             }
         };

@@ -5,10 +5,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taylor.entity.TestEntity;
@@ -16,8 +14,7 @@ import com.taylor.service.TestService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring-application.xml"})
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})
-@Transactional
+@TransactionConfiguration
 public class TestUnit {
     @Autowired
     private TestService testService;
@@ -29,8 +26,9 @@ public class TestUnit {
     }
 
     @Test
+    @Transactional
     public void TestSave() {
-        TestEntity test = new TestEntity("lisi1");
+        TestEntity test = new TestEntity("lisi2");
         testService.save(test);
         Assert.assertSame(true, test.getId()!=null);
     }

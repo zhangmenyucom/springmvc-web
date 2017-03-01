@@ -7,6 +7,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,11 +18,13 @@ import mockit.Injectable;
 import mockit.Mock;
 import mockit.MockUp;
 import mockit.Mocked;
+import mockit.NonStrictExpectations;
 import mockit.Tested;
+import mockit.internal.expectations.TestOnlyPhase;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:config/spring-application.xml"})
-@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})
+@TransactionConfiguration
 @Transactional
 public class TestJmoc2 {
 
@@ -43,7 +46,9 @@ public class TestJmoc2 {
                 return testService.getByPrimaryKey(id).getName();
             }
         };
-        System.out.println(myObject.getTestMsg(1));
+    	
+    	
+        System.out.println(new MyObject().getTestMsg(1));
     }
     
     @Test
