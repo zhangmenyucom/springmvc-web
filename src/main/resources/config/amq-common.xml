@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+ http://www.springframework.org/schema/beans/spring-beans.xsd    
+ http://www.springframework.org/schema/context    
+ http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/jms
+ http://www.springframework.org/schema/jms/spring-jms.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:amq.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="jmsConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+		<property name="connectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="${jms.broker_url}" />
+				 <!-- 是否异步发送 --> 
+				<property name="useAsyncSend" value="true" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="jmsTemplateQueue" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<!--deliveryMode 1:非持久 2：持久 非持久化：高吞吐，易丢失；持久化：低吞吐，不易丢失。 -->
+		<property name="deliveryMode" value="${delivery_mode}" />
+		<!-- 0最低，9最高。0-4作为一般的优先级，5-9作为加速优先级 -->
+		<property name="priority" value="${priority}" />
+		<!-- 使 deliveryMode, priority, timeToLive设置生效 -->
+		<property name="explicitQosEnabled" value="${explicitQosEnabled}" />
+		<!--这里注意:如果不开启事务，消息在异常的情况下是不会重试的 -->
+		<property name="sessionTransacted" value="${sessionTransacted}" />
+		<property name="pubSubDomain" value="false" />
+	</bean>
+
+	<bean id="jmsTemplateTopic" class="org.springframework.jms.core.JmsTemplate">
+		<property name="connectionFactory" ref="jmsConnectionFactory" />
+		<!--deliveryMode 1:非持久 2：持久 非持久化：高吞吐，易丢失；持久化：低吞吐，不易丢失。 -->
+		<property name="deliveryMode" value="${delivery_mode}" />
+		<!-- 0最低，9最高。0-4作为一般的优先级，5-9作为加速优先级 -->
+		<property name="priority" value="${priority}" />
+		<!-- 使 deliveryMode, priority, timeToLive设置生效 -->
+		<property name="explicitQosEnabled" value="${explicitQosEnabled}" />
+		<!--这里注意:如果不开启事务，消息在异常的情况下是不会重试的 -->
+		<property name="sessionTransacted" value="${sessionTransacted}" />
+		<property name="pubSubDomain" value="true" />
+	</bean>
+</beans>
