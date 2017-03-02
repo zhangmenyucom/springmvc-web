@@ -7,6 +7,14 @@
           http://www.springframework.org/schema/context/spring-context-3.0.xsd  
           http://www.springframework.org/schema/aop
           http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:amq.properties</value>
+			</list>
+		</property>
+	</bean>
 	<!-- 自动扫描bean，把作了注解的类转换为bean -->
 	<context:component-scan base-package="com.taylor">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
@@ -15,7 +23,7 @@
 	</context:component-scan>
 	<import resource="jdbc-context.xml" />
 
-    <!-- amq相关 -->
+	<!-- amq相关 -->
 	<import resource="amq-common.xml" />
 	<import resource="amq-queue.xml" />
 	<import resource="amq-listener.xml" />
