@@ -29,6 +29,7 @@ public class TestController extends BaseAction {
 
 	@Autowired
 	private TestService testService;
+	
 
 	@ResponseBody
 	@RequestMapping("/query")

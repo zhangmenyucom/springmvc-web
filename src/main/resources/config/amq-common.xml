@@ -10,10 +10,20 @@
 		<property name="connectionFactory">
 			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
 				<property name="brokerURL" value="${jms.broker_url}" />
-				 <!-- 是否异步发送 --> 
+				<!-- 是否异步发送 -->
 				<property name="useAsyncSend" value="true" />
+				<!-- 这里定义重试策略,注意：只有持久化的才会重试 -->
+				<property name="redeliveryPolicy" ref="redeliveryPolicy" />
 			</bean>
 		</property>
+	</bean>
+	
+	<bean id="redeliveryPolicy" class="org.apache.activemq.RedeliveryPolicy">
+		<!--重发次数 延时、延时系数、延时指数开关、目标（重发等待时间1s, 2s, 4s, 8s） -->
+		<property name="maximumRedeliveries" value="3" />
+		<property name="initialRedeliveryDelay" value="1000" />
+		<property name="backOffMultiplier" value="2" />
+		<property name="useExponentialBackOff" value="true" />
 	</bean>
 
 	<bean id="jmsTemplateQueue" class="org.springframework.jms.core.JmsTemplate">

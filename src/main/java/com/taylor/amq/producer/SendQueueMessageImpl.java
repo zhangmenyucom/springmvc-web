@@ -23,7 +23,7 @@ public class SendQueueMessageImpl implements SendMessage {
 	@Autowired
 	@Qualifier("taylorQueue")
 	private Queue queue;
-
+	
 	public void setJmsTemplate(JmsTemplate jmsTemplate) {
 		this.jmsTemplate = jmsTemplate;
 	}

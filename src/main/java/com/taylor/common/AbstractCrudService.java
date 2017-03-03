@@ -3,10 +3,13 @@ package com.taylor.common;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Entity, Query>> extends BaseService<Entity, Query, Dao> implements CrudService<Entity, Query> {
 
 
     @Override
+    @Transactional
     public Entity save(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(),RETURN_CODE.ARGS_EMPTY.getMsg());
@@ -16,6 +19,7 @@ public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Ent
     }
     
     @Override
+    @Transactional
     public Entity update(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
@@ -34,6 +38,7 @@ public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Ent
     }
 
     @Override
+    @Transactional
     public void del(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
@@ -42,6 +47,7 @@ public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Ent
     }
 
     @Override
+    @Transactional
     public void delByPrimaryKey(Object id) {
         if (id == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
