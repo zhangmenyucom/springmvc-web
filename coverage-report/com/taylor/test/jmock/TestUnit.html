@@ -23,11 +23,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
 import org.springframework.test.context.transaction.TransactionConfiguration;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taylor.entity.TestEntity;
@@ -36,106 +33,102 @@ import com.taylor.service.TestService;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>18</td><td>&nbsp;</td>
+      <td class='line'>15</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@RunWith(SpringJUnit4ClassRunner.class)</pre></td>
     </tr>
     <tr>
-      <td class='line'>19</td><td>&nbsp;</td>
+      <td class='line'>16</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@ContextConfiguration(locations = {"classpath:config/spring-application.xml"})</pre></td>
     </tr>
     <tr>
-      <td class='line'>20</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})</pre></td>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>@TransactionConfiguration</pre></td>
     </tr>
     <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='comment'>//@TransactionConfiguration(defaultRollback=true)</pre></td>
+      <td class='line'>18</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l18s0'>public class TestUnit {</pre></td>
     </tr>
     <tr>
-      <td class='line'>22</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l22s0'>public class TestUnit {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>23</td><td>&nbsp;</td>
+      <td class='line'>19</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Autowired</pre></td>
     </tr>
     <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
+      <td class='line'>20</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>26</td><td>&nbsp;</td>
+      <td class='line'>22</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>27</td><td>&nbsp;</td>
+      <td class='line'>23</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testGet() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td>&nbsp;</td>
+      <td class='line'>24</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        TestEntity test = new TestEntity("zhangmenyucom");</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td>&nbsp;</td>
+      <td class='line'>25</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        Assert.assertSame(true, testService.get(test) != null);</pre></td>
     </tr>
     <tr>
-      <td class='line'>30</td><td>&nbsp;</td>
+      <td class='line'>26</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>32</td><td>&nbsp;</td>
+      <td class='line'>28</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>33</td><td>&nbsp;</td>
-      <td><pre class='comment'>    //@Transactional</pre></td>
+      <td class='line'>29</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>    @Transactional</pre></td>
     </tr>
     <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
+      <td class='line'>30</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void TestSave() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        TestEntity test = new TestEntity("lisi2");</pre></td>
     </tr>
     <tr>
-      <td class='line'>36</td><td>&nbsp;</td>
+      <td class='line'>32</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        testService.save(test);</pre></td>
     </tr>
     <tr>
-      <td class='line'>37</td><td>&nbsp;</td>
+      <td class='line'>33</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        Assert.assertSame(true, test.getId()!=null);</pre></td>
     </tr>
     <tr>
-      <td class='line'>38</td><td>&nbsp;</td>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>40</td><td>&nbsp;</td>
+      <td class='line'>36</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td>&nbsp;</td>
+      <td class='line'>37</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void TestQueryList() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>42</td><td>&nbsp;</td>
+      <td class='line'>38</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        TestEntity query = new TestEntity("lisi");</pre></td>
     </tr>
     <tr>
-      <td class='line'>43</td><td>&nbsp;</td>
+      <td class='line'>39</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        Assert.assertSame(3, testService.find(query).size());</pre></td>
     </tr>
     <tr>
-      <td class='line'>44</td><td>&nbsp;</td>
+      <td class='line'>40</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr>
-      <td class='line'>45</td><td>&nbsp;</td>
+      <td class='line'>41</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>
