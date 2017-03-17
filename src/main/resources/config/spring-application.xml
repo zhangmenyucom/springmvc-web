@@ -21,27 +21,11 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<import resource="jdbc-context.xml" />
-
+    <import resource="rabbitmq-config.xml" />
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为10MB -->
 		<property name="maxUploadSize">
 			<value>10000000</value>
 		</property>
 	</bean>
-	<bean id="rmqProducer" class="com.taylor.mq.RmqProducer"></bean>
-	<bean id="connectionFactory" class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
-		<property name="username" value="${rmq.manager.user}" />
-		<property name="password" value="${rmq.manager.password}" />
-		<property name="host" value="${rmq.ip}" />
-		<property name="port" value="${rmq.port}" />
-	</bean>
-
-	<bean id="rabbitAdmin" class="org.springframework.amqp.rabbit.core.RabbitAdmin">
-		<constructor-arg ref="connectionFactory" />
-	</bean>
-	<!-- 创建rabbitTemplate 消息模板类 -->
-	<bean id="rabbitTemplate" class="org.springframework.amqp.rabbit.core.RabbitTemplate">
-		<constructor-arg ref="connectionFactory"></constructor-arg>
-	</bean>
-
 </beans>

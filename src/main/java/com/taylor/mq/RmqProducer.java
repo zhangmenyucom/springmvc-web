@@ -1,31 +1,27 @@
 package com.taylor.mq;
 
-import javax.annotation.Resource;
+import org.springframework.amqp.core.AmqpTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-
+@Service
 public class RmqProducer {
 
-	@Resource
-	private RabbitTemplate rabbitTemplate;
+	@Autowired
+	private AmqpTemplate amqpTemplate;
 
 	/**
 	 * 发送信息
-	 * 
 	 * @param msg
 	 */
-	public void sendMessage(RabbitMessage msg) {
+	public void sendMessage(RmqMessage msg) {
 		try {
-			System.out.println(rabbitTemplate.getConnectionFactory().getHost());
-			System.out.println(rabbitTemplate.getConnectionFactory().getPort());
 			// 发送信息
-			rabbitTemplate.convertAndSend(msg.getExchange(), msg.getRouteKey(), msg);
-
+			amqpTemplate.convertAndSend(msg.getExchange(), msg.getRouteKey(), msg);
+			System.out.println("发送消息成功");
 		} catch (Exception e) {
 			System.out.println("发送消息失败");
 			e.printStackTrace();
 		}
-
 	}
-
 }
