@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - RmqMessage.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../logo.png'/>
+  <script type='text/javascript' src='../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>springmvc-web\src\main\java\com\taylor\mq\RmqMessage.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.taylor.mq;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+
+import lombok.Data;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>10</td><td class='count'>2</td>
+      <td><pre class='prettyprint jmp'><span id='l10s0' title='Executions: 2' class='covered'>@Data</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>11</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>public class RmqMessage implements Serializable {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>12</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private static final long serialVersionUID = -6487839157908352120L;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>14</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private Class&lt;?>[] <span class='instance uncovered' title='Reads: 0 Writes: 1'>paramTypes</span>;// 参数类型</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>15</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance covered' title='Reads: 1 Writes: 1'>exchange</span>;// 交换器</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private Object[] <span class='instance uncovered' title='Reads: 0 Writes: 1'>params</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private String <span class='instance covered' title='Reads: 1 Writes: 1'>routeKey</span>;// 路由key</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>21</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l21s0'>	public RmqMessage() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>22</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l22s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l24s0'>	public RmqMessage(String exchange, String routeKey, Object... params) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l25s0'>		this.params = params;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>		this.exchange = exchange;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l27s0'>		this.routeKey = routeKey;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l28s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@SuppressWarnings("rawtypes")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l31s0'>	public RmqMessage(String exchange, String routeKey, String methodName, Object... params) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l32s0'>		this.params = params;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l33s0'>		this.exchange = exchange;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l34s0'>		this.routeKey = routeKey;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l35s0'>		int len = params.length;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l36s0'>		Class[] clazzArray = new Class[len];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td class='count'>2</td>
+      <td><pre class='prettyprint covered' id='l37s0'>		for (int i = 0; i &lt; len; i++)</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l38s0'>			clazzArray[i] = params[i].getClass();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l39s0'>		this.paramTypes = clazzArray;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l40s0'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public byte[] getSerialBytes() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l43s0'>		byte[] res = new byte[0];</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>44</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l44s0'>		ByteArrayOutputStream baos = new ByteArrayOutputStream();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>45</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		ObjectOutputStream oos;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>46</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l47s0'>			oos = new ObjectOutputStream(baos);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l48s0'>			oos.writeObject(this);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l49s0'>			oos.close();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>			res = baos.toByteArray();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>		} catch (IOException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>			e.printStackTrace();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>54</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l54s0'>		return res;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>55</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>
