@@ -76,12 +76,12 @@
 			<version>1.5</version>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
+<!-- 		<dependency>
 			<groupId>com.googlecode.jmockit</groupId>
 			<artifactId>jmockit-coverage</artifactId>
 			<version>0.999.24</version>
 			<scope>test</scope>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
