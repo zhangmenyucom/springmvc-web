@@ -13,6 +13,7 @@
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<import resource="jdbc-context.xml" />
+	<import resource="rocketmq-context.xml"/>
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为10MB -->
