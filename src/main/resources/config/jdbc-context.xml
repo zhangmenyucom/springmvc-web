@@ -7,13 +7,6 @@
            http://www.springframework.org/schema/tx
            http://www.springframework.org/schema/tx/spring-tx.xsd"
 	default-lazy-init="false">
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-	     <property name="locations">
-            <list>
-                <value>classpath:jdbc.properties</value>
-            </list>
-        </property>
-	</bean>
 
 	<bean id="dataSource" name="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -39,7 +32,7 @@
 		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 -->
 		<property name="poolPreparedStatements" value="${db.poolPreparedStatements}" />
 		<property name="maxPoolPreparedStatementPerConnectionSize" value="${db.maxPoolPreparedStatementPerConnectionSize}" />
-	    <property name="filters" value="${db.filters}"/>
+		<property name="filters" value="${db.filters}" />
 	</bean>
 
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

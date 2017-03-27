@@ -40,12 +40,11 @@ public class TestController extends BaseAction {
 	public CommonResponse<String> sendMessage() throws Exception {
 		Message msg = new Message("MyTopic", "MyTag", (JSONObject.toJSONString("123")).getBytes());
 		SendResult sendResult = null;
-		sendResult = myProducer.getDefaultMQProducer().send(msg);
+		sendResult = myProducer.send(msg);
 		// 当消息发送失败时如何处理
 		if (sendResult == null || sendResult.getSendStatus() != SendStatus.SEND_OK) {
 			// TODO
 		}
-
 		return new CommonResponse<String>(0, "成功", "发射成功");
 	}
 }

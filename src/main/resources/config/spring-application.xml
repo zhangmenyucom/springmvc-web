@@ -7,13 +7,22 @@
           http://www.springframework.org/schema/context/spring-context-3.0.xsd  
           http://www.springframework.org/schema/aop
           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:rocketmq.properties</value>
+			</list>
+		</property>
+	</bean>
 	<!-- 自动扫描bean，把作了注解的类转换为bean -->
 	<context:component-scan base-package="com.taylor">
-	    <context:include-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 	<import resource="jdbc-context.xml" />
-	<import resource="rocketmq-context.xml"/>
+	<import resource="rocketmq-context.xml" />
 
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<!-- 设置上传文件的最大尺寸为10MB -->

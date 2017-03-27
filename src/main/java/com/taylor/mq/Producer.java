@@ -16,7 +16,7 @@ public class Producer {
 		 * 因为服务器会回查这个Group下的任意一个Producer
 		 */
 		final DefaultMQProducer producer = new DefaultMQProducer("ProducerGroupName");
-		producer.setNamesrvAddr("192.168.186.130:9876");
+		producer.setNamesrvAddr("192.168.186.129:9876");
 		producer.setInstanceName("Producer");
 
 		/**

@@ -6,50 +6,21 @@ import org.slf4j.LoggerFactory;
 import com.alibaba.rocketmq.client.exception.MQClientException;
 import com.alibaba.rocketmq.client.producer.DefaultMQProducer;
 
-public class MyProducer {
+
+public class MyProducer extends DefaultMQProducer {
 
 	private final Logger logger = LoggerFactory.getLogger(MyProducer.class);
 
-	private DefaultMQProducer defaultMQProducer;
-	private String producerGroup;
-	private String namesrvAddr;
-
-	/**
-	 * Spring bean init-method
-	 */
 	public void init() throws MQClientException {
 		// 参数信息
-		logger.info("DefaultMQProducer initialize!");
-		logger.info(producerGroup);
-		logger.info(namesrvAddr);
-
-		// 初始化
-		defaultMQProducer = new DefaultMQProducer(producerGroup);
-		defaultMQProducer.setNamesrvAddr(namesrvAddr);
-		defaultMQProducer.setInstanceName(String.valueOf(System.currentTimeMillis()));
-
-		defaultMQProducer.start();
+		logger.info("MyProducer initialize!");
+		logger.info(this.getProducerGroup());
+		logger.info(this.getNamesrvAddr());
+		logger.info(this.getInstanceName());
+		this.start();
 	}
 
-	/**
-	 * Spring bean destroy-method
-	 */
 	public void destroy() {
-		defaultMQProducer.shutdown();
+		this.shutdown();
 	}
-
-	public DefaultMQProducer getDefaultMQProducer() {
-		return defaultMQProducer;
-	}
-
-	// ---------------setter -----------------
-
-	public void setProducerGroup(String producerGroup) {
-		this.producerGroup = producerGroup;
-	}
-
-	public void setNamesrvAddr(String namesrvAddr) {
-		this.namesrvAddr = namesrvAddr;
-	}
-
 }
