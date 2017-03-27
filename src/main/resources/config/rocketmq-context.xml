@@ -8,9 +8,9 @@
 
 	<!-- 生产者 -->
 	<bean id="myProducer" class="com.taylor.mq.MyProducer" init-method="init" destroy-method="destroy" scope="singleton">
-		<property name="producerGroup" value="MyProducerGroup" />
-		<property name="namesrvAddr" value="192.168.186.129:9876" />
-		<property name="instanceName" value="myRocketProducer" />
+		<property name="producerGroup" value="${producer.producerGroup}" />
+		<property name="namesrvAddr" value="${producer.namesrvAddr}" />
+		<property name="instanceName" value="${producer.instanceName}" />
 	</bean>
 
 	<!-- 枚举变换 -->
@@ -22,13 +22,13 @@
 	</bean>
 	<!-- 消费者 -->
 	<bean id="myConsumer" class="com.taylor.mq.MyConsumer" init-method="init" destroy-method="destroy" scope="singleton">
-		<property name="consumerGroup" value="MyConsumerGroup" />
-		<property name="namesrvAddr" value="192.168.186.129:9876" />
-		<property name="instanceName" value="myRocketConsumer" />
+		<property name="consumerGroup" value="${consumer.consumerGroup}" />
+		<property name="namesrvAddr" value="${consumer.namesrvAddr}" />
+		<property name="instanceName" value="${consumer.instanceName}" />
 		<!-- 设置Consumer第一次启动是从队列头部开始消费还是队列尾部开始消费,如果非第一次启动，那么按照上次消费的位置继续消费 -->
-		<property name="consumeFromWhere" ref="first2offet" />
+		<property name="consumeFromWhere" ref="${consumer.consumeFromWhere}" />
 		<!-- 设置为集群消费(区别于广播消费) -->
-		<property name="messageModel" ref="clustering" />
+		<property name="messageModel" ref="${consumer.messageModel}" />
 		<property name="concurrentlyMessageListener" ref="messageListener" />
 		<property name="topic" value="MyTopic" />
 		<property name="tag" value="MyTag" />
