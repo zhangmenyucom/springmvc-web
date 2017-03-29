@@ -11,7 +11,7 @@ public class TestDaoTest extends BaseDaoTest {
 	@Autowired
 	private TestDao testDao;
 
-	@Test
+	@Test 
 	public void test() {
 		TestEntity entity = new TestEntity();
 		entity.setId(2);
