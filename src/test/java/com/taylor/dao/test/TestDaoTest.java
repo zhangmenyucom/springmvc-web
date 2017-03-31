@@ -1,10 +1,11 @@
-package com.taylor.test;
+package com.taylor.dao.test;
+
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.taylor.dao.TestDao;
-import com.taylor.dao.test.BaseDaoTest;
 import com.taylor.entity.TestEntity;
 
 public class TestDaoTest extends BaseDaoTest {
@@ -16,7 +17,7 @@ public class TestDaoTest extends BaseDaoTest {
 	public void test() {
 		TestEntity entity = new TestEntity();
 		entity.setId(2);
-		System.out.println(testDao.get(entity).getName());
+		assertEquals("helloworld~",testDao.get(entity).getName());
 	}
 
 }
