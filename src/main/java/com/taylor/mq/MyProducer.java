@@ -17,7 +17,9 @@ public class MyProducer extends DefaultMQProducer {
 		logger.info(this.getProducerGroup());
 		logger.info(this.getNamesrvAddr());
 		logger.info(this.getInstanceName());
+		this.setVipChannelEnabled(false);
 		this.start();
+		this.createTopic("MyTopic", "MyTag", 1);
 	}
 
 	public void destroy() {
