@@ -60,7 +60,7 @@
 		<constructor-arg ref="sqlSessionFactory" />
 	</bean>
 	<bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.taylor.**.dao" />
+		<property name="basePackage" value="com.taylor.dao" />
 	</bean>
 	<!-- 配置 Annotation 驱动，定义事务 -->
 	<!-- 事务管理器 -->
