@@ -21,7 +21,7 @@ public class PullConsumer {
 
 		DefaultMQPullConsumer consumer = new DefaultMQPullConsumer("PullConsumerGroup");
 
-		consumer.setNamesrvAddr("192.168.186.129:9876");
+		consumer.setNamesrvAddr("121.40.99.142:9876");
 
 		consumer.start();
 
