@@ -76,6 +76,14 @@
 			<version>1.5</version>
 			<scope>test</scope>
 		</dependency>
+		
+<!-- 		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>1.21</version>
+			<scope>test</scope>
+		</dependency> -->
+		
 		<!-- <dependency> <groupId>com.googlecode.jmockit</groupId> <artifactId>jmockit-coverage</artifactId> <version>0.999.24</version> <scope>test</scope> </dependency> -->
 		<dependency>
 			<groupId>junit</groupId>

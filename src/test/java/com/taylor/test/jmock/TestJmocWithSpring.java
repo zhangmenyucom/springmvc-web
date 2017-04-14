@@ -17,81 +17,91 @@ import mockit.NonStrictExpectations;
 import mockit.Verifications;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:config/spring-application.xml"})
+@ContextConfiguration(locations = { "classpath:config/spring-application.xml" })
 @TransactionConfiguration
 public class TestJmocWithSpring {
 
-    @Autowired
-    private TestService testService;
+	@Autowired
+	private TestService testService;
 
-    @Mocked
-    private MyObject myObject;
+	@Mocked
+	private MyObject myObject;
 
-    @Mocked
-    private UserService userService;
+	@Mocked
+	private UserService userService;
 
+	@Test
+	public void testGet() {
+		new Expectations() {// 录制预期模拟行为
+			{
+				myObject.Hi(anyString);
+				result = "lisi";
+				times=2;
+			
+				myObject.hello(anyString);
+				result = "hello zhansan";
 
-    @Test
-    public void testGet() {
-        new NonStrictExpectations(myObject) {// 录制预期模拟行为
-            {
-                myObject.hello(anyString);
-                result = "hello zhansan";
-            }
-        };
-        System.out.println(myObject.Hi("lilei"));
-        System.out.println(testService.save(new TestEntity("haha")) + myObject.hello("zhansan"));
-    }
+			
+			}
+		};
+		System.out.println(myObject.Hi(""));
+		System.out.println(myObject.Hi(""));
+		System.out.println(myObject.hello(""));
 
-    @Test
-    public void testExpectations() {
-        new Expectations() {// 录制预期模拟行为
-            {
-                userService.getMessage();
-                result = "hello world!";
-                minTimes = 2;
-                userService.getName("test");
-                result = "hello world2!";
-                minTimes = 2;
-            }
-        };
+/*		new Verifications() {
+			{
+				this.invoke(myObject, "hello", "");
+				times = 2;
+			}
+		};*/
 
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
-    }
+	}
 
+	@Test
+	public void testExpectations() {
+		new Expectations() {// 录制预期模拟行为
+			{
+				userService.getMessage();
+				result = "hello world!";
+				minTimes = 2;
+				userService.getName("test");
+				result = "hello world2!";
+				minTimes = 2;
+			}
+		};
 
-    @Test
-    public void testNonStrictExpectations() {
-        new NonStrictExpectations() {// 录制预期模拟行为
-            {
-                userService.getMessage();
-                result = "hello world!";
-                minTimes = 2;
-                userService.getName("test");
-                result = "hello world2!";
-                minTimes = 2;
-            }
-        };
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
+	}
 
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
-        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
+	@Test
+	public void testNonStrictExpectations() {
+		new NonStrictExpectations() {// 录制预期模拟行为
+			{
+				userService.getMessage();
+				result = "hello world!";
+				minTimes = 2;
+				userService.getName("test");
+				result = "hello world2!";
+				minTimes = 2;
+			}
+		};
 
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());
+		System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));
 
-        new Verifications() {
-            {
-                this.invoke(userService, "getMessage");
-                times = 2;
-                this.invoke(userService, "getName", "test");
-                times = 2;
-            }
-        };
-    }
-
+		new Verifications() {
+			{
+				this.invoke(userService, "getMessage");
+				times = 2;
+				this.invoke(userService, "getName", "test");
+				times = 2;
+			}
+		};
+	}
 
 }
-
