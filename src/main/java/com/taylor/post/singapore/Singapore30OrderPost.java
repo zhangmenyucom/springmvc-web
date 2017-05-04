@@ -23,14 +23,14 @@ public class Singapore30OrderPost {
 
 		// 表单域的值,既post传入的key=value
 
-		NameValuePair[] data = { new NameValuePair("text", "[" + JsonUtil.transfer2JsonString(new Singapore30Order("t1s30", "",gameType, mod, "fen", mutiply, 1950, false)) + "]") };
+		NameValuePair[] data = { new NameValuePair("text", "[" + JsonUtil.transfer2JsonString(new Singapore30Order("t1s30", "",gameType, mod, Constants.unit, mutiply, 1950, false)) + "]") };
 
 		// method使用表单阈值
 
 		method.setRequestBody(data);
 		method.setRequestHeader("Accept", " image/jpeg, application/x-ms-application, image/gif, application/xaml+xml, image/pjpeg, application/x-ms-xbap, application/x-shockwave-flash, application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, */*");
 		method.setRequestHeader("Accept-Language", "en-US");
-		method.setRequestHeader("Host", "em.yuanbo4.com");
+		//method.setRequestHeader("Host", "em.yuanbo4.com");
 		method.setRequestHeader("Origin", "http://em.yuanbo4.com");
 		method.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 		method.setRequestHeader("Accept-Encoding", " gzip, deflate");
@@ -55,7 +55,7 @@ public class Singapore30OrderPost {
 			stringBuffer.append(str);
 
 		}
-		//System.out.println(stringBuffer.toString());
+		System.out.println(stringBuffer.toString());
 
 		method.releaseConnection();
 	}

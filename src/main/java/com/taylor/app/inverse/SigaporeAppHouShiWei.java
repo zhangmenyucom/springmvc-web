@@ -1,4 +1,4 @@
-package com.taylor.app;
+package com.taylor.app.inverse;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import com.taylor.data.game.GameOpenCode;
 import com.taylor.post.singapore.LatestResultPost;
 import com.taylor.post.singapore.Singapore30OrderPost;
 
-public class SigaporeAppHouGeWei {
+public class SigaporeAppHouShiWei {
     public static void main(String[] args) {
         startThread();
     }
@@ -41,9 +41,9 @@ public class SigaporeAppHouGeWei {
                         continue;
                     } else {
                         lastesCodeNum = cureentCodeNum;
-                        cureentNum = Integer.parseInt(gameOpenCode.getCode().substring(gameOpenCode.getCode().lastIndexOf(',') + 1, gameOpenCode.getCode().length()));
+                        cureentNum = Integer.parseInt(gameOpenCode.getCode().substring(gameOpenCode.getCode().lastIndexOf(',')-1, gameOpenCode.getCode().length()-2));
                         System.out.println(
-                                "方案：大小单双后二星压个位---最新一期号码：" + gameOpenCode.getIssue() + "开奖码：" + gameOpenCode.getCode() + ",尾数为：------" + cureentNum + "--------" + (cureentNum % 2 == 0 ? "双" : "单"));
+                                "方案：大小单双后二星压十位---最新一期号码：" + gameOpenCode.getIssue() + "开奖码：" + gameOpenCode.getCode() + ",尾数为：------" + cureentNum + "--------" + (cureentNum % 2 == 0 ? "双" : "单"));
                         if (strategyCode == 3 && (cureentNum % 2 == lastNum % 2 && lastNum != -1)) {
                             initMutiply = factor;
                             System.out.println("++++++++++++++++++++++恭喜你中奖了++++++++++++++++++++++++++");
@@ -66,7 +66,7 @@ public class SigaporeAppHouGeWei {
                         if (initMutiply > Constants.maxMutiply) {
                             initMutiply = Constants.maxMutiply / Constants.maxTerentFactor;
                         }
-                        System.out.println("当前金额：【----------------" + resp.getData().getLotteryBalance() + "----------------】元");
+                        System.out.println("当前金额：【----------------" + resp.getData().getLotteryBalance() + "元----------------】");
 
                         /** 奇偶次数变化 **/
                         if (lastNum % 2 == 0) {
@@ -79,23 +79,24 @@ public class SigaporeAppHouGeWei {
                         System.out.println("当前连续双数：【" + evenTimes + "】次，连续单数：【" + oddTimes + "】次");
                         if (evenTimes >= Constants.inverseNum) {
                             /** 持续多次双后开始投单 **/
-                            singapore30OrderPost.postOrder("dxdsh", initMutiply, "单双,单");
+                            singapore30OrderPost.postOrder("dxdsh", initMutiply, "单,单双");
                             strategyName = "连续" + evenTimes + "次双后压单";
                             strategyCode = 1;
                         } else if (oddTimes >= Constants.inverseNum) {
                             /** 持续多次单后开始投双 **/
-                            singapore30OrderPost.postOrder("dxdsh", initMutiply, "单双,双");
+                            singapore30OrderPost.postOrder("dxdsh", initMutiply, "双,单双");
                             strategyName = "连续" + oddTimes + "次单后压双";
                             strategyCode = 2;
                         } else {
                             /** 剩下的按上次出奖投注 **/
                             // singapore30OrderPost.postOrder("dxdsh", initMutiply, lastNum % 2 == 0
                             // ? "单双,双" : "单双,单");
-                            strategyName = "按上次开奖下注：" + (lastNum % 2 == 0 ? "单双,双" : "单双,单");
-                            strategyCode = 3;
+                            //strategyName = "按上次开奖下注：" + (lastNum % 2 == 0 ? "双,单双" : "单,单双");
+                            //strategyCode = 3;
                         }
-                        System.out.println("加注成功，加注倍数【" + initMutiply + "】下注方案：【" + strategyName + "】,操作时间:【" + new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date()) + "】");
-                    }
+                        if (strategyCode == 1 || strategyCode == 2) {
+                            System.out.println("加注成功，加注倍数【" + initMutiply + "】下注方案：【" + strategyName + "】,操作时间:【" + new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date()) + "】");
+                        }                    }
                 } else {
                     System.out.println("执行结果出错。。。");
                     break;

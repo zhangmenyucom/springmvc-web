@@ -1,4 +1,4 @@
-package com.taylor.app;
+package com.taylor.app.inverse;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -66,7 +66,7 @@ public class SigaporeAppHouGeWei {
                         if (initMutiply > Constants.maxMutiply) {
                             initMutiply = Constants.maxMutiply / Constants.maxTerentFactor;
                         }
-                        System.out.println("当前金额：【----------------" + resp.getData().getLotteryBalance() + "----------------】元");
+                        System.out.println("当前金额：【----------------" + resp.getData().getLotteryBalance() + "----------------】");
 
                         /** 奇偶次数变化 **/
                         if (lastNum % 2 == 0) {
@@ -91,10 +91,12 @@ public class SigaporeAppHouGeWei {
                             /** 剩下的按上次出奖投注 **/
                             // singapore30OrderPost.postOrder("dxdsh", initMutiply, lastNum % 2 == 0
                             // ? "单双,双" : "单双,单");
-                            strategyName = "按上次开奖下注：" + (lastNum % 2 == 0 ? "单双,双" : "单双,单");
-                            strategyCode = 3;
+                            //strategyName = "按上次开奖下注：" + (lastNum % 2 == 0 ? "单双,双" : "单双,单");
+                            //strategyCode = 3;
                         }
-                        System.out.println("加注成功，加注倍数【" + initMutiply + "】下注方案：【" + strategyName + "】,操作时间:【" + new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date()) + "】");
+                        if (strategyCode == 1 || strategyCode == 2) {
+                            System.out.println("加注成功，加注倍数【" + initMutiply + "】下注方案：【" + strategyName + "】,操作时间:【" + new SimpleDateFormat("YYYY-MM-dd HH:mm:ss").format(new Date()) + "】");
+                        }
                     }
                 } else {
                     System.out.println("执行结果出错。。。");
