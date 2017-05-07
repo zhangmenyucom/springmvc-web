@@ -10,7 +10,7 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-import com.taylor.app.Constants;
+import com.taylor.app.inverse.Constants;
 import com.taylor.common.CommonResponse;
 import com.taylor.common.JsonUtil;
 

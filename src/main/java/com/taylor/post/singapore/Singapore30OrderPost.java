@@ -10,7 +10,7 @@ import org.apache.commons.httpclient.HttpException;
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 
-import com.taylor.app.Constants;
+import com.taylor.app.inverse.Constants;
 import com.taylor.common.JsonUtil;
 import com.taylor.yuanbo.order.Singapore30Order;
 
@@ -23,7 +23,7 @@ public class Singapore30OrderPost {
 
 		// 表单域的值,既post传入的key=value
 
-		NameValuePair[] data = { new NameValuePair("text", "[" + JsonUtil.transfer2JsonString(new Singapore30Order("t1s30", "",gameType, mod, Constants.unit, mutiply, 1950, false)) + "]") };
+		NameValuePair[] data = { new NameValuePair("text", "[" + JsonUtil.transfer2JsonString(new Singapore30Order("t1s30", "",gameType, mod, Constants.unit, mutiply, 1954, false)) + "]") };
 
 		// method使用表单阈值
 
