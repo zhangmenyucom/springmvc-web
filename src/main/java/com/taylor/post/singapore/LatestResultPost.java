@@ -26,7 +26,7 @@ public class LatestResultPost {
 
 		// 表单域的值,既post传入的key=value
 
-		NameValuePair[] data = { new NameValuePair("lottery", "t1s30") };
+		NameValuePair[] data = { new NameValuePair("lottery", "t1s60") };
 
 		// method使用表单阈值
 

@@ -2,7 +2,7 @@ package com.taylor.app.inverse;
 
 public class Constants {
     /** cookie信息 **/
-    public static final String cookie = "aliyungf_tc=AQAAAB+SojZJEgkAjrvndLI/QIi+ntuI; SESSION=3ccc08f6-cc17-4ecc-be95-2c58b43617e2";
+    public static final String cookie = "aliyungf_tc=AQAAANwQ/ThkDAUAbtlAcObi14r0rcum; SESSION=d00c02ac-9b57-4fc3-9888-ea8306dfcc01";
 
     /** 加载因子-相当于下平均下来每次都赚 **/
     public static final int factor = new Integer(2);
@@ -23,7 +23,7 @@ public class Constants {
     public static final int maxTerentFactor = new Integer(6);
 
     /** 睡眠时间 **/
-    public static final int sleepTime = new Integer(5000);
+    public static final int sleepTime = new Integer(25000);
 
     /** 反转次数时机---连续n次不中后改变为相反策略，一旦失败-从头开始 **/
     public static final int reversetimes = new Integer(5);
