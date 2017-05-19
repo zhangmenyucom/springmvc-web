@@ -22,7 +22,7 @@ import java.util.Map;
 @Data
 @AllArgsConstructor
 public class QueryBean {
-	private HashMap<String, Object> parameters;// 字段值等于
+	private Map<String, Object> parameters;// 字段值等于
 	private Map<String, Object> mustParams;// 针对中文字段，避免因分词匹配上别的数据
 	private List<ESRangeFilter> rangeFilters;
 	private List<EsTermsFilter> termFilters;
@@ -35,13 +35,13 @@ public class QueryBean {
 	private String sumFiled;
 	private List<SortOrderExt> sortOrderExts;
 
-	public QueryBean(HashMap<String, Object> parameters, int pageFrom, int pageSize) {
+	public QueryBean(Map<String, Object> parameters, int pageFrom, int pageSize) {
 		this.parameters = parameters;
 		this.pageFrom = pageFrom;
 		this.pageSize = pageSize;
 	}
 
-	public QueryBean(HashMap<String, Object> parameters, int pageFrom, int pageSize, String sortFiled,
+	public QueryBean(Map<String, Object> parameters, int pageFrom, int pageSize, String sortFiled,
 			SortOrder sortOrder) {
 		super();
 		this.parameters = parameters;
