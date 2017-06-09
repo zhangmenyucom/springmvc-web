@@ -75,25 +75,21 @@ public class ElasticsearchService {
         esClient = new TransportClient(settings);
         for (String address : nodeAddress.split(",")) {
             for (String port : nodePort.split(",")) {
-                ((TransportClient) esClient).addTransportAddress(new InetSocketTransportAddress(
-                        address, Integer.valueOf(port)));
+                ((TransportClient) esClient).addTransportAddress(new InetSocketTransportAddress(address, Integer.valueOf(port)));
             }
         }
 
-        bulkProcessor = BulkProcessor
-                .builder(esClient, new BulkProcessor.Listener() {
+        bulkProcessor = BulkProcessor.builder(esClient, new BulkProcessor.Listener() {
                     @Override
                     public void beforeBulk(long executionId, BulkRequest request) {
                     }
 
                     @Override
-                    public void afterBulk(long executionId,
-                                          BulkRequest request, BulkResponse response) {
+                    public void afterBulk(long executionId, BulkRequest request, BulkResponse response) {
                     }
 
                     @Override
-                    public void afterBulk(long executionId,
-                                          BulkRequest request, Throwable failure) {
+                    public void afterBulk(long executionId, BulkRequest request, Throwable failure) {
                     }
                 }).setBulkActions(1000)
                 .setBulkSize(new ByteSizeValue(1, ByteSizeUnit.GB))
