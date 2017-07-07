@@ -10,6 +10,7 @@ import com.taylor.uuid.state.UidStateEnum;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,7 +47,7 @@ public class NumHolder {
             //从远程加载全部记录
             for (BizIdEntity entity : bizIdEntities) {
                 UidHolderStatus uidHolderStatus = new UidHolderStatus(entity);
-                currentIds.put(entity.getBizType().toUpperCase(), uidHolderStatus);
+                currentIds.put(entity.getBizType().toUpperCase(Locale.ENGLISH), uidHolderStatus);
             }
         } catch (Exception e) {
             log.error("fail to init slots", e);
@@ -79,7 +80,7 @@ public class NumHolder {
      * @return
      */
     private static Long getNextIdOnce(String bizTypeWithPostfix) {
-        UidHolderStatus uidHolderStatus = getCurrentIds().get(bizTypeWithPostfix.toUpperCase());
+        UidHolderStatus uidHolderStatus = getCurrentIds().get(bizTypeWithPostfix.toUpperCase(Locale.ENGLISH));
         if (uidHolderStatus == null) {
             Set<String> keys = getCurrentIds().keySet();
             StringBuilder buffer = new StringBuilder();

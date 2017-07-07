@@ -4,7 +4,7 @@ import com.taylor.common.CommonResource;
 import com.taylor.common.PropertiesLoader;
 import com.taylor.common.UidGenerateException;
 import com.taylor.common.utils.ThreadUtil;
-import com.taylor.dao.BizIdDAO;
+import com.taylor.dao.BizIdDao;
 import com.taylor.service.BizIdService;
 import com.taylor.uuid.entity.BizIdEntity;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +15,7 @@ import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class BizIdServiceImpl implements BizIdService {
     public static final int LOCK_TIMEOUT = 1000;
     @Resource
-    private BizIdDAO bizIdDAO;
+    private BizIdDao bizIdDAO;
 
     @Override
     @Transactional
@@ -50,7 +51,7 @@ public class BizIdServiceImpl implements BizIdService {
         if (module ==  null){
             throw new IllegalArgumentException("module cannot be null");
         }
-        module = module.toLowerCase();
+        module = module.toLowerCase(Locale.ENGLISH);
         List<BizIdEntity> list = null;
         CommonResource resource = PropertiesLoader.getResource();
         JedisPool jedisPool = new JedisPool(resource.getHost(), resource.getPort());

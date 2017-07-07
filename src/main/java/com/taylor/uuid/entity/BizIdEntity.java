@@ -22,5 +22,7 @@ public class BizIdEntity {
 
     private int step;
 
+    private String module;
+
     private Timestamp updateTime;
 }

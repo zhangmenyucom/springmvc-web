@@ -2,7 +2,7 @@ package com.taylor.uuid.loader;
 
 
 /**
- * @author Michael.Wang
+ * @author taylor.zhang
  * @date 2017/5/2
  */
 public class UidConstant {
@@ -22,7 +22,6 @@ public class UidConstant {
      */
     public static final String URL_FETCH_DIRECT = "api/common/uid/direct/";
 
-
     /**
      * 成功的响应Code
      */
@@ -35,6 +34,14 @@ public class UidConstant {
      * 属性值
      */
     public static final String PROP_URL_PREFIX = "uid_url_prefix";
+
+    /**
+     * 模块
+     **/
     public static final String MODULE = "module";
+
+    /**
+     * 扫描间隔
+     **/
     public static final String SCAN_INTERVAL_SECONDS = "scan_interval_seconds";
 }

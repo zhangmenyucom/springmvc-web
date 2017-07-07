@@ -1,4 +1,4 @@
-package com.taylor.action;
+package com.taylor.controller;
 
 import com.taylor.common.CommonResponse;
 import com.taylor.service.BizIdService;
@@ -36,6 +36,11 @@ public class BizIdController {
         return new CommonResponse<String>(maxId);
     }
 
+    /**
+     * @desc模块相关所有id
+     * @param module
+     * @return
+     */
     @RequestMapping(value = "/api/common/uid/fetch/{module}", method = RequestMethod.GET)
     @ResponseBody
     public CommonResponse<List<BizIdEntity>> fetchAll(@PathVariable("module") String module) {

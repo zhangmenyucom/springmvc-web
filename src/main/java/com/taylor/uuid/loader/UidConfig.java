@@ -47,10 +47,10 @@ public class UidConfig {
      */
     public static UidConfig init(String urlContext, String module, int scanIntervalSeconds) {
         instance = new UidConfig();
-        urlContext += urlContext.endsWith("/") ? "" : "/";
+        urlContext += !urlContext.isEmpty() && urlContext.charAt(urlContext.length() - 1) == '/' ? "" : "/";
         instance.urlPrefixUid = urlContext + UidConstant.URL_UID;
         instance.urlFetchAll = urlContext + UidConstant.URL_FETCH_ALL_PART ;
-        instance.urlFetchAll += instance.urlFetchAll.endsWith("/") ? "" : "/";
+        instance.urlFetchAll += !instance.urlFetchAll.isEmpty() && instance.urlFetchAll.charAt(instance.urlFetchAll.length() - 1) == '/' ? "" : "/";
         instance.urlFetchAll += module;
         instance.urlFetchDirect = urlContext + UidConstant.URL_FETCH_DIRECT;
         instance.scanIntervalSeconds = scanIntervalSeconds;
@@ -71,7 +71,7 @@ public class UidConfig {
         try {
             Properties properties = PropertyUtil.getProperties(UidConstant.FILE_COMMON_PROPERTIES);
             String prefix = (String) properties.get(UidConstant.PROP_URL_PREFIX);
-            prefix += prefix.endsWith("/") ? "" : "/";
+            prefix += !prefix.isEmpty() && prefix.charAt(prefix.length() - 1) == '/' ? "" : "/";
             properties.setProperty(UidConstant.PROP_URL_PREFIX, prefix);
             return properties;
         } catch (Throwable t) {

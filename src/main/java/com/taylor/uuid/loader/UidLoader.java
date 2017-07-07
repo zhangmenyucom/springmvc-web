@@ -91,7 +91,7 @@ public class UidLoader {
         try {
             String url = uidConfig.getUrlFetchDirect() + bizTypeWithPostfix;
             String responseContent = sendSimpleGetRequest(url);
-            log.debug("response json:{}",responseContent);
+            log.debug("response json:{}", responseContent);
             CommonResponse commonResponse = JsonUtil.fromJson(responseContent, CommonResponse.class);
             Object data = commonResponse.getData();
             if (data instanceof Integer) {

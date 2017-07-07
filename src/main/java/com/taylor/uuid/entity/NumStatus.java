@@ -26,7 +26,7 @@ public class NumStatus {
     public boolean isEmpty() {
         int state = this.getState();
         if (state == UidStateEnum.TAKING.getKey() || state == UidStateEnum.EMPTY.getKey()) {
-            if (this.getCurrentNum().longValue() == this.getMax()) {
+            if (this.getCurrentNum().longValue() >= this.getMax()) {
                 this.setState(UidStateEnum.EMPTY.getKey());
                 return true;
             }
