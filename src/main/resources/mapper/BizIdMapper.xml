@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taylor.dao.BizIdDao">
+    <resultMap id="bizIdEntity" type="com.taylor.uuid.entity.BizIdEntity">
+        <id column="ID" jdbcType="INTEGER" property="id"/>
+        <result column="BIZ_TYPE" jdbcType="VARCHAR" property="bizType"/>
+        <result column="MODULE" jdbcType="VARCHAR" property="module"/>
+        <result column="CURRENT_MAX" jdbcType="INTEGER" property="currentMax"/>
+        <result column="STEP" jdbcType="INTEGER" property="step"/>
+        <result column="UPDATE_TIME" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="entity.id" parameterType="com.taylor.uuid.entity.BizIdEntity">
+        INSERT INTO BIZ_ID
+        (BIZ_TYPE,MODULE,CURRENT_MAX,STEP)
+        VALUES (
+        #{entity.bizType},
+        #{entity.module},
+        #{entity.currentMax},
+        #{entity.step})
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.taylor.uuid.entity.BizIdEntity">
+        UPDATE BIZ_ID
+        SET CURRENT_MAX = CURRENT_MAX + step
+        WHERE
+        BIZ_TYPE = #{entity.bizType, jdbcType=VARCHAR} AND CURRENT_MAX = #{entity.currentMax, jdbcType=INTEGER}
+    </update>
+
+    <update id="initAll" parameterType="java.lang.String">
+        UPDATE BIZ_ID
+        SET CURRENT_MAX = CURRENT_MAX + step*2 where module=#{module, jdbcType=VARCHAR}
+    </update>
+
+    <select id="queryAll" resultMap="bizIdEntity">
+        SELECT
+        ID,
+        BIZ_TYPE,
+        MODULE,
+        CURRENT_MAX,
+        STEP
+        FROM
+        BIZ_ID
+    </select>
+
+    <select id="queryByModule" resultMap="bizIdEntity">
+        SELECT
+        ID,
+        BIZ_TYPE,
+        MODULE,
+        CURRENT_MAX,
+        STEP
+        FROM
+        BIZ_ID
+        WHERE
+        MODULE = #{module, jdbcType=VARCHAR}
+    </select>
+
+    <select id="queryByBizType" resultMap="bizIdEntity">
+        SELECT
+        ID,
+        BIZ_TYPE,
+        MODULE,
+        CURRENT_MAX,
+        STEP
+        FROM
+        BIZ_ID
+        WHERE
+        BIZ_TYPE = #{bizType, jdbcType=VARCHAR}
+    </select>
+</mapper>
