@@ -4,25 +4,25 @@ import java.util.List;
 
 public interface CrudService<Entity,Query> {
 	
-	  public Entity save(Entity entity);
+	  Entity save(Entity entity);
 
-	  public Entity update(Entity entity);
+	  Entity update(Entity entity);
 
-	  public Entity updateByPrimaryKeySelective(Entity entity);
+	  Entity updateByPrimaryKeySelective(Entity entity);
 
-	  public void del(Entity entity);
+	  void del(Entity entity);
 
-	  public void delByPrimaryKey(Object id);
+	  void delByPrimaryKey(Object id);
 	  
-	  public Entity get(Entity entity);
+	  Entity get(Entity entity);
 
-	  public Entity getByPrimaryKey(Object id);
+	  Entity getByPrimaryKey(Object id);
 
-	  public List<Entity> find(Query query);
+	  List<Entity> find(Query query);
 
-	  public int findTotalCount(Query query);
+	  int findTotalCount(Query query);
 	  
-	  public boolean exist(Entity entity);
+	  boolean exist(Entity entity);
 
 
 }
