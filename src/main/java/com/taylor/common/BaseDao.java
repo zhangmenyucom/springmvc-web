@@ -13,7 +13,7 @@ import tk.mybatis.mapper.common.Mapper;
  */
 public interface BaseDao<Entity, Query> extends Mapper<Entity> {
 
-    public Entity get(@Param(value = "entity") Entity entity);
+    public Entity get(@Param(value = "com/taylor/uuid/entity") Entity entity);
 
     public Entity getByPrimaryKey(@Param(value = "id") Object id);
 
@@ -21,13 +21,13 @@ public interface BaseDao<Entity, Query> extends Mapper<Entity> {
 
     public Integer findTotalCount(@Param(value = "query") Query query);
 
-    public int save(@Param(value = "entity") Entity entity);
+    public int save(@Param(value = "com/taylor/uuid/entity") Entity entity);
 
-    public int update(@Param(value = "entity") Entity entity);
+    public int update(@Param(value = "com/taylor/uuid/entity") Entity entity);
 
-    public int del(@Param(value = "entity") Entity entity);
+    public int del(@Param(value = "com/taylor/uuid/entity") Entity entity);
 
     public int delByPrimaryKey(@Param(value = "id") Object id);
 
-    public int updateByPrimaryKeySelective(@Param(value = "entity") Entity entity);
+    public int updateByPrimaryKeySelective(@Param(value = "com/taylor/uuid/entity") Entity entity);
 }
