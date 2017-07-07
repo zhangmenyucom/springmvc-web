@@ -29,7 +29,11 @@
 
     <update id="initAll" parameterType="java.lang.String">
         UPDATE BIZ_ID
-        SET CURRENT_MAX = CURRENT_MAX + step*2 where module=#{module, jdbcType=VARCHAR}
+        SET CURRENT_MAX = CURRENT_MAX + step*2
+        where 1=1
+        <if test="module!=null">
+            and module=#{module, jdbcType=VARCHAR}
+        </if>
     </update>
 
     <select id="queryAll" resultMap="bizIdEntity">

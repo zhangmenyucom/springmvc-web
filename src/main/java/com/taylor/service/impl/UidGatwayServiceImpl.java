@@ -45,7 +45,7 @@ public class UidGatwayServiceImpl implements UidGateWayService {
         if (!isInited) {
             //从本地加载全部记录
             UidConfig.init("http://localhost:8080/", "", 1);
-            List<BizIdEntity> entities = bizIdService.queryAll();
+            List<BizIdEntity> entities = bizIdService.fetchAll(null);
             NumHolder.initSlots(entities);
             Thread thread = BufferUpdateThread.getThread();
             thread.setDaemon(true);
