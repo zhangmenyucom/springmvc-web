@@ -18,7 +18,7 @@ import java.util.List;
 public interface BizIdDao extends BaseDao<BizIdEntity, BizIdEntity> {
     BizIdEntity queryByBizType(String bizType);
 
-    List<BizIdEntity> queryByModule(String module);
+    List<BizIdEntity> queryByModule(@Param("module") String module);
 
     List<BizIdEntity> queryAll();
 

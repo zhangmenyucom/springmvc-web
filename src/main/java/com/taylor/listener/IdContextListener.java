@@ -1,5 +1,6 @@
 package com.taylor.listener;
 
+import com.taylor.common.utils.StringUtil;
 import com.taylor.common.utils.ThreadUtil;
 import com.taylor.service.UidGateWayService;
 import com.taylor.uuid.client.impl.BufferUpdateThread;
@@ -29,6 +30,10 @@ public class IdContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent event) {
+        String module = event.getServletContext().getInitParameter("module");
+        if (StringUtil.isEmpty(module)) {
+            throw new IllegalArgumentException("module cannot be null.please set module in web.xml");
+        }
         ServletContext servletContext = event.getServletContext();
         ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         UidGateWayService uidGateWayService = ctx.getBean(UidGateWayService.class);
@@ -38,7 +43,7 @@ public class IdContextListener implements ServletContextListener {
             uidGateWayService = ctx.getBean(UidGateWayService.class);
         }
         log.info("init uid gateway [start]");
-        uidGateWayService.init();
+        uidGateWayService.init(module);
         log.info("init uid gateway [end]");
     }
 

@@ -1,4 +1,4 @@
-package redis;
+package com.taylor.uuid.redis;
 
 import com.taylor.uuid.lock.DistributedReentrantLock;
 import lombok.extern.slf4j.Slf4j;

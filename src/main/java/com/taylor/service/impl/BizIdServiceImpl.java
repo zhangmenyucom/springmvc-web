@@ -7,10 +7,10 @@ import com.taylor.common.utils.ThreadUtil;
 import com.taylor.dao.BizIdDao;
 import com.taylor.service.BizIdService;
 import com.taylor.uuid.entity.BizIdEntity;
+import com.taylor.uuid.redis.RedisReentrantLock;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import redis.RedisReentrantLock;
 import redis.clients.jedis.JedisPool;
 
 import javax.annotation.Resource;

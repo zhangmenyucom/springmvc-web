@@ -7,7 +7,7 @@
     </context-param>
     <context-param>
         <param-name>module</param-name>
-        <param-value>pay_center</param-value>
+        <param-value>order_center</param-value>
     </context-param>
 
     <listener>

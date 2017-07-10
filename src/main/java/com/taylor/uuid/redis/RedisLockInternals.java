@@ -1,4 +1,4 @@
-package redis;
+package com.taylor.uuid.redis;
 
 import com.taylor.common.PropertiesLoader;
 import lombok.extern.slf4j.Slf4j;
@@ -54,17 +54,19 @@ public class RedisLockInternals {
             if (password!=null&&!"".equals(password)){
                 jedis.auth(password);
             }
-            List<String> keys = new ArrayList();
+            List<String> keys = new ArrayList<>();
             keys.add(lockId);
-            List<String> args = new ArrayList();
+            List<String> args = new ArrayList<>();
             args.add(value);
             args.add(lockTimeout + "");
             Long ret = (Long) jedis.eval(RedisLockConstant.CREATE_KEY_LUA, keys, args);
-            if (new Long(1).equals(ret)) {
+            if (Long.valueOf(1).equals(ret)) {
                 return value;
             }
         } finally {
-            if (jedis != null) jedis.close();
+            if (jedis != null) {
+                jedis.close();
+            }
         }
         return null;
     }
@@ -73,13 +75,15 @@ public class RedisLockInternals {
         Jedis jedis = null;
         try {
             jedis = jedisPool.getResource();
-            List<String> keys = new ArrayList();
+            List<String> keys = new ArrayList<>();
             keys.add(key);
-            List<String> args = new ArrayList();
+            List<String> args = new ArrayList<>();
             args.add(value);
             jedis.eval(RedisLockConstant.UNLOCK_LUA, keys, args);
         } finally {
-            if (jedis != null) jedis.close();
+            if (jedis != null) {
+                jedis.close();
+            }
         }
     }
 

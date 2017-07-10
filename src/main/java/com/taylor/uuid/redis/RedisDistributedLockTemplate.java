@@ -1,4 +1,4 @@
-package redis;
+package com.taylor.uuid.redis;
 
 
 import com.taylor.uuid.lock.Callback;
@@ -18,6 +18,7 @@ public class RedisDistributedLockTemplate implements DistributedLockTemplate {
         this.jedisPool = jedisPool;
     }
 
+    @Override
     public Object execute(String lockId, int timeout, Callback callback) {
         RedisReentrantLock distributedReentrantLock = null;
         boolean getLock = false;

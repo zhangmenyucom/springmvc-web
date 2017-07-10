@@ -1,4 +1,4 @@
-package redis;
+package com.taylor.uuid.redis;
 
 /**
  * Reids Lock 常量

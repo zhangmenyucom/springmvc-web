@@ -34,10 +34,10 @@ public class UidGeneratorController {
         return new CommonResponse<>(uid);
     }
 
-    @RequestMapping(value = "/api/common/uid/direct/init", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/common/uid/direct/init/{moudle}", method = RequestMethod.GET)
     @ResponseBody
-    public CommonResponse init() {
-        uidGateWayService.init();
+    public CommonResponse init(@PathVariable String moudle) {
+        uidGateWayService.init(moudle);
         CommonResponse response = new CommonResponse();
         response.setCode(ResponseStatusEnum.SUCCESS.getCode());
         return response;

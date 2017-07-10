@@ -41,11 +41,11 @@ public class UidGatwayServiceImpl implements UidGateWayService {
      * 使用前务必调用此方法进行初始化，如果在容器中使用，需要在Listener中进行初始化
      */
     @Override
-    public synchronized void init() {
+    public synchronized void init(String module) {
         if (!isInited) {
             //从本地加载全部记录
-            UidConfig.init("http://localhost:8080/", "", 1);
-            List<BizIdEntity> entities = bizIdService.fetchAll(null);
+            UidConfig.init("http://localhost:8080/", module, 1);
+            List<BizIdEntity> entities = bizIdService.fetchAll(module);
             NumHolder.initSlots(entities);
             Thread thread = BufferUpdateThread.getThread();
             thread.setDaemon(true);

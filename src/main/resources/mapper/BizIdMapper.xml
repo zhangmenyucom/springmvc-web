@@ -27,12 +27,12 @@
         BIZ_TYPE = #{entity.bizType, jdbcType=VARCHAR} AND CURRENT_MAX = #{entity.currentMax, jdbcType=INTEGER}
     </update>
 
-    <update id="initAll" parameterType="java.lang.String">
+    <update id="initAll">
         UPDATE BIZ_ID
         SET CURRENT_MAX = CURRENT_MAX + step*2
         where 1=1
-        <if test="module!=null">
-            and module=#{module, jdbcType=VARCHAR}
+        <if test="_parameter!=null">
+            and module=#{_parameter, jdbcType=VARCHAR}
         </if>
     </update>
 
