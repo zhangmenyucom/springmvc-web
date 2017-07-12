@@ -7,13 +7,12 @@
     <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
         <property name="connectionFactory" ref="jmsConnectionFactory"/>
     </bean>
-
-    <!--topic监听器放在这里-->
-    <jms:listener-container destination-type="topic" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager" container-type="default">
+    <!-- 定义Topic监听器 -->
+    <jms:listener-container destination-type="topic" container-type="default" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager">
         <jms:listener destination="taylorTopic" ref="taylorTopicEventListener" method="onMessage"/>
     </jms:listener-container>
     <!-- 定义Queue监听器 -->
     <jms:listener-container destination-type="queue" container-type="default" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager">
-        <jms:listener destination="taylorQueue" ref="taylorQueueEventListener"  method="onMessage"/>
+        <jms:listener destination="taylorQueue" ref="taylorQueueEventListener" method="onMessage"/>
     </jms:listener-container>
 </beans>

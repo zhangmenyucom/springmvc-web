@@ -16,7 +16,7 @@ import javax.jms.Session;
 public class SendQueueMessageImpl implements SendMessage {
 
 	@Autowired
-	@Qualifier("jmsTemplate")
+	@Qualifier("jmsQueueTemplate")
 	private JmsTemplate jmsTemplate;
 
 	@Autowired

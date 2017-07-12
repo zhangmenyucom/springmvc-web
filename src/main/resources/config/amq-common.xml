@@ -22,7 +22,7 @@
         <property name="useExponentialBackOff" value="true"/>
     </bean>
 
-    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+    <bean id="jmsQueueTemplate" class="org.springframework.jms.core.JmsTemplate">
         <property name="connectionFactory" ref="jmsConnectionFactory"/>
         <!--deliveryMode 1:非持久 2：持久 非持久化：高吞吐，易丢失；持久化：低吞吐，不易丢失。 -->
         <property name="deliveryMode" value="${delivery_mode}"/>
@@ -32,6 +32,20 @@
         <property name="explicitQosEnabled" value="${explicitQosEnabled}"/>
         <!--这里注意:如果不开启事务，消息在异常的情况下是不会重试的 -->
         <property name="sessionTransacted" value="${sessionTransacted}"/>
+
         <property name="pubSubDomain" value="false"/>
+    </bean>
+    <bean id="jmsTopicTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <!--deliveryMode 1:非持久 2：持久 非持久化：高吞吐，易丢失；持久化：低吞吐，不易丢失。 -->
+        <property name="deliveryMode" value="${delivery_mode}"/>
+        <!-- 0最低，9最高。0-4作为一般的优先级，5-9作为加速优先级 -->
+        <property name="priority" value="${priority}"/>
+        <!-- 使 deliveryMode, priority, timeToLive设置生效 -->
+        <property name="explicitQosEnabled" value="${explicitQosEnabled}"/>
+        <!--这里注意:如果不开启事务，消息在异常的情况下是不会重试的 -->
+        <property name="sessionTransacted" value="${sessionTransacted}"/>
+        <!-- 非pub/sub模型（发布/订阅），即队列模式 -->
+        <property name="pubSubDomain" value="true"/>
     </bean>
 </beans>

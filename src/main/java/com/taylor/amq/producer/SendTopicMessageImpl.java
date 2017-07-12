@@ -18,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class SendTopicMessageImpl implements SendMessage {
 
 	@Autowired
-	@Qualifier("jmsTemplate")
+	@Qualifier("jmsTopicTemplate")
 	private JmsTemplate jmsTemplate;
 
 	@Autowired

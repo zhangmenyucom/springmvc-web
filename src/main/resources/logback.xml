@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <configuration debug="false" scan="true" scanPeriod="30 seconds">
 	<contextName>logbackApp</contextName>
 	<property name="default_pattern" value="%d{yyyy-MM-dd HH:mm:ss} [%-5level] - %m%n" />
 	<property name="log_home" value="${log.file.home}"/>
-
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
 		<encoder>
