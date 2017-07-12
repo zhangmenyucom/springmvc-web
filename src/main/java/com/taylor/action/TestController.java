@@ -1,10 +1,8 @@
 package com.taylor.action;
 
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.taylor.amq.producer.SendMessage;
+import com.taylor.entity.TestEntity;
+import com.taylor.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.taylor.amq.producer.SendMessage;
-import com.taylor.entity.TestEntity;
-import com.taylor.service.TestService;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RequestMapping("/test")
 @Controller
@@ -44,7 +42,7 @@ public class TestController extends BaseAction {
 	 * @author xiaolu.zhang
 	 * @date 2017年3月2日 下午3:30:15
 	 */
-	@RequestMapping(value = "/queue/{message}")
+	@RequestMapping("/queue/{message}")
 	@ResponseBody
 	public String sendQueue(@PathVariable("message") String message) {
 		sendQueueMessage.sendMessage(message);
@@ -57,7 +55,7 @@ public class TestController extends BaseAction {
 	 * @author xiaolu.zhang
 	 * @date 2017年3月2日 下午3:30:37
 	 */
-	@RequestMapping(value = "/topic/{message}")
+	@RequestMapping("/topic/{message}")
 	@ResponseBody
 	public String sendTopic(@PathVariable("message") String message) {
 		sendTopicMessage.sendMessage(message);

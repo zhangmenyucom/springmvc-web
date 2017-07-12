@@ -6,6 +6,7 @@ import javax.jms.Session;
 import javax.jms.TextMessage;
 import javax.jms.Topic;
 
+import lombok.Builder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Component;
 public class SendTopicMessageImpl implements SendMessage {
 
 	@Autowired
-	@Qualifier("jmsTemplateTopic")
+	@Qualifier("jmsTemplate")
 	private JmsTemplate jmsTemplate;
 
 	@Autowired
@@ -28,13 +29,14 @@ public class SendTopicMessageImpl implements SendMessage {
 		this.jmsTemplate = jmsTemplate;
 	}
 
+	@Override
 	public void sendMessage(final String message) {
 		jmsTemplate.send(topic, new MessageCreator() {
 			@Override
 			public Message createMessage(Session session) throws JMSException {
-				TextMessage textMessage = session.createTextMessage(message);
-				return textMessage;
+				return session.createTextMessage(message);
 			}
 		});
-	}
+        System.out.println("发送主题消息成功");
+    }
 }

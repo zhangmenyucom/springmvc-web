@@ -12,8 +12,8 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>springmvc-web\src\main\java\com\taylor\test\jmock\TestJmocWithSpring.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l1s0'>package com.taylor.test.jmock;</pre></td>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.taylor.test.jmock;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -22,11 +22,8 @@
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 import com.taylor.entity.TestEntity;
 import com.taylor.service.TestService;
@@ -40,273 +37,269 @@ import mockit.Verifications;
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>22</td><td>&nbsp;</td>
+      <td class='line'>19</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@RunWith(SpringJUnit4ClassRunner.class)</pre></td>
     </tr>
     <tr>
-      <td class='line'>23</td><td>&nbsp;</td>
+      <td class='line'>20</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@ContextConfiguration(locations = {"classpath:config/spring-application.xml"})</pre></td>
     </tr>
     <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})</pre></td>
+      <td class='line'>21</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>@TransactionConfiguration</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>@Transactional</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>26</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l26s0'>public class TestJmocWithSpring {</pre></td>
+      <td class='line'>22</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l22s0'>public class TestJmocWithSpring {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>28</td><td>&nbsp;</td>
+      <td class='line'>24</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Autowired</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td>&nbsp;</td>
+      <td class='line'>25</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
+      <td class='line'>27</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Mocked</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td>&nbsp;</td>
+      <td class='line'>28</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private MyObject <span class='instance uncovered' title='Reads: 0 Writes: 0'>myObject</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
+      <td class='line'>30</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Mocked</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private UserService <span class='instance uncovered' title='Reads: 0 Writes: 0'>userService</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>38</td><td>&nbsp;</td>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>39</td><td>&nbsp;</td>
+      <td class='line'>35</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testGet() {</pre></td>
     </tr>
     <tr>
+      <td class='line'>36</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l36s0'>        new NonStrictExpectations(myObject) {// 录制预期模拟行为</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l38s0'>                myObject.hello(anyString);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l39s0'>                result = "hello zhansan";</pre></td>
+    </tr>
+    <tr>
       <td class='line'>40</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l40s0'>        new NonStrictExpectations(myObject) {// 录制预期模拟行为</pre></td>
+      <td><pre class='prettyprint covered' id='l40s0'>            }</pre></td>
     </tr>
     <tr>
       <td class='line'>41</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>            {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>42</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l42s0'>                myObject.hello(anyString);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>43</td><td class='count'>1</td>
-      <td><pre class='prettyprint covered' id='l43s0'>                result = "hello zhansan";</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>44</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>            }</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>45</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        };</pre></td>
     </tr>
     <tr>
-      <td class='line'>46</td><td>&nbsp;</td>
+      <td class='line'>42</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        System.out.println(myObject.Hi("lilei"));</pre></td>
     </tr>
     <tr>
-      <td class='line'>47</td><td>&nbsp;</td>
+      <td class='line'>43</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")) + myObject.hello("zhansan"));</pre></td>
     </tr>
     <tr>
-      <td class='line'>48</td><td>&nbsp;</td>
+      <td class='line'>44</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>50</td><td>&nbsp;</td>
+      <td class='line'>46</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>51</td><td>&nbsp;</td>
+      <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testExpectations() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>52</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l52s0'>        new Expectations() {// 录制预期模拟行为</pre></td>
+      <td class='line'>48</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l48s0'>        new Expectations() {// 录制预期模拟行为</pre></td>
     </tr>
     <tr>
-      <td class='line'>53</td><td>&nbsp;</td>
+      <td class='line'>49</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>            {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>                userService.getMessage();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>                result = "hello world!";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>                minTimes = 2;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>53</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l53s0'>                userService.getName("test");</pre></td>
     </tr>
     <tr>
       <td class='line'>54</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l54s0'>                userService.getMessage();</pre></td>
+      <td><pre class='prettyprint uncovered' id='l54s0'>                result = "hello world2!";</pre></td>
     </tr>
     <tr>
       <td class='line'>55</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l55s0'>                result = "hello world!";</pre></td>
+      <td><pre class='prettyprint uncovered' id='l55s0'>                minTimes = 2;</pre></td>
     </tr>
     <tr>
       <td class='line'>56</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l56s0'>                minTimes = 2;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l56s0'>            }</pre></td>
     </tr>
     <tr>
-      <td class='line'>57</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l57s0'>                userService.getName("test");</pre></td>
+      <td class='line'>57</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        };</pre></td>
     </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>58</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l58s0'>                result = "hello world2!";</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>59</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l59s0'>                minTimes = 2;</pre></td>
+      <td class='line'>59</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
     </tr>
     <tr>
       <td class='line'>60</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>            }</pre></td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
     </tr>
     <tr>
       <td class='line'>61</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        };</pre></td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
     </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
+    </tr>
     <tr>
       <td class='line'>63</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>64</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>65</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>66</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>67</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>70</td><td>&nbsp;</td>
+      <td class='line'>66</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>71</td><td>&nbsp;</td>
+      <td class='line'>67</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testNonStrictExpectations() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>72</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l72s0'>        new NonStrictExpectations() {// 录制预期模拟行为</pre></td>
+      <td class='line'>68</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l68s0'>        new NonStrictExpectations() {// 录制预期模拟行为</pre></td>
     </tr>
     <tr>
-      <td class='line'>73</td><td>&nbsp;</td>
+      <td class='line'>69</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>            {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>70</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l70s0'>                userService.getMessage();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>71</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l71s0'>                result = "hello world!";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>72</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l72s0'>                minTimes = 2;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>73</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l73s0'>                userService.getName("test");</pre></td>
     </tr>
     <tr>
       <td class='line'>74</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l74s0'>                userService.getMessage();</pre></td>
+      <td><pre class='prettyprint uncovered' id='l74s0'>                result = "hello world2!";</pre></td>
     </tr>
     <tr>
       <td class='line'>75</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l75s0'>                result = "hello world!";</pre></td>
+      <td><pre class='prettyprint uncovered' id='l75s0'>                minTimes = 2;</pre></td>
     </tr>
     <tr>
       <td class='line'>76</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l76s0'>                minTimes = 2;</pre></td>
+      <td><pre class='prettyprint uncovered' id='l76s0'>            }</pre></td>
     </tr>
     <tr>
-      <td class='line'>77</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l77s0'>                userService.getName("test");</pre></td>
+      <td class='line'>77</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        };</pre></td>
     </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>78</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l78s0'>                result = "hello world2!";</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>79</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l79s0'>                minTimes = 2;</pre></td>
+      <td class='line'>79</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
     </tr>
     <tr>
       <td class='line'>80</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>            }</pre></td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
     </tr>
     <tr>
       <td class='line'>81</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        };</pre></td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>82</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>83</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>84</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>85</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getMessage());</pre></td>
+      <td class='line'>85</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l85s0'>        new Verifications() {</pre></td>
     </tr>
     <tr>
       <td class='line'>86</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>        System.out.println(testService.save(new TestEntity("haha")).getName() + "  " + userService.getName("test"));</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>89</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l89s0'>        new Verifications() {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>90</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>            {</pre></td>
     </tr>
     <tr>
+      <td class='line'>87</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l87s0'>                this.invoke(userService, "getMessage");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>88</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l88s0'>                times = 2;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>89</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l89s0'>                this.invoke(userService, "getName", "test");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>90</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l90s0'>                times = 2;</pre></td>
+    </tr>
+    <tr>
       <td class='line'>91</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l91s0'>                this.invoke(userService, "getMessage");</pre></td>
+      <td><pre class='prettyprint uncovered' id='l91s0'>            }</pre></td>
     </tr>
     <tr>
-      <td class='line'>92</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l92s0'>                times = 2;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>93</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l93s0'>                this.invoke(userService, "getName", "test");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>94</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l94s0'>                times = 2;</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>95</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>            }</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>96</td><td>&nbsp;</td>
+      <td class='line'>92</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        };</pre></td>
     </tr>
     <tr>
-      <td class='line'>97</td><td>&nbsp;</td>
+      <td class='line'>93</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>100</td><td>&nbsp;</td>
+      <td class='line'>96</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

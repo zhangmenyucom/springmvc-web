@@ -12,8 +12,8 @@
   <table cellpadding='0' cellspacing='1'>
     <caption>springmvc-web\src\main\java\com\taylor\test\jmock\TestJmoc2.java</caption>
     <tr>
-      <td class='line'>1</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l1s0'>package com.taylor.test.jmock;</pre></td>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.taylor.test.jmock;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
@@ -22,10 +22,8 @@
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestExecutionListeners;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.DependencyInjectionTestExecutionListener;
-import org.springframework.test.context.transaction.TransactionalTestExecutionListener;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.taylor.service.TestService;
@@ -35,177 +33,166 @@ import mockit.Injectable;
 import mockit.Mock;
 import mockit.MockUp;
 import mockit.Mocked;
-import mockit.NonStrictExpectations;
 import mockit.Tested;
-import mockit.internal.expectations.TestOnlyPhase;
 </div><span>import ...</span></pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>24</td><td>&nbsp;</td>
+      <td class='line'>20</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@RunWith(SpringJUnit4ClassRunner.class)</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td>&nbsp;</td>
+      <td class='line'>21</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@ContextConfiguration(locations = {"classpath:config/spring-application.xml"})</pre></td>
     </tr>
     <tr>
-      <td class='line'>26</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>@TestExecutionListeners({DependencyInjectionTestExecutionListener.class, TransactionalTestExecutionListener.class})</pre></td>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>@TransactionConfiguration</pre></td>
     </tr>
     <tr>
-      <td class='line'>27</td><td>&nbsp;</td>
+      <td class='line'>23</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@Transactional</pre></td>
     </tr>
     <tr>
-      <td class='line'>28</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l28s0'>public class TestJmoc2 {</pre></td>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l24s0'>public class TestJmoc2 {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>30</td><td>&nbsp;</td>
+      <td class='line'>26</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Autowired</pre></td>
     </tr>
     <tr>
-      <td class='line'>31</td><td>&nbsp;</td>
+      <td class='line'>27</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Injectable</pre></td>
     </tr>
     <tr>
-      <td class='line'>32</td><td>&nbsp;</td>
+      <td class='line'>28</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>34</td><td>&nbsp;</td>
+      <td class='line'>30</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Tested</pre></td>
     </tr>
     <tr>
-      <td class='line'>35</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private MyObject <span class='instance uncovered' title='Reads: 0 Writes: 0'>myObject</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>37</td><td>&nbsp;</td>
+      <td class='line'>33</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Mocked</pre></td>
     </tr>
     <tr>
-      <td class='line'>38</td><td>&nbsp;</td>
+      <td class='line'>34</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    private MyObject <span class='instance uncovered' title='Reads: 0 Writes: 0'>myObject2</span>;</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>40</td><td>&nbsp;</td>
+      <td class='line'>36</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>41</td><td>&nbsp;</td>
+      <td class='line'>37</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testGetTestMsg() {</pre></td>
     </tr>
     <tr>
-      <td class='line'></td><td>&nbsp;</td>
-      <td class='comment' onclick='showHideLines(this)'><div>        /*new MockUp&lt;MyObject>() {
-            @Mock
-            public String getTestMsg(Integer id) {
-                return testService.getByPrimaryKey(id).getName();
-            }
-        };*/</div><span>        /*...*/</span></td>
+      <td class='line'>38</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l38s0'>        new MockUp&lt;MyObject>() {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            @Mock</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>40</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            public String getTestMsg(Integer id) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>41</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l41s0'>                return testService.getByPrimaryKey(id).getName();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>42</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>            }</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>43</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>        };</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>49</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l49s0'>    	new NonStrictExpectations() {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>50</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			{</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>51</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l51s0'>				myObject.getTestMsg((Integer)any);</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>52</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l52s0'>				result="hah";</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>53</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>			}</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>54</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>		};</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>55</td><td>&nbsp;</td>
+      <td class='line'>46</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>        System.out.println(new MyObject().getTestMsg(1));</pre></td>
     </tr>
     <tr>
-      <td class='line'>56</td><td>&nbsp;</td>
+      <td class='line'>47</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>58</td><td>&nbsp;</td>
+      <td class='line'>49</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>59</td><td>&nbsp;</td>
+      <td class='line'>50</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testGetTestMsg2() {</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>61</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l61s0'>    	new Expectations() {</pre></td>
+      <td class='line'>52</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l52s0'>    	new Expectations() {</pre></td>
     </tr>
     <tr>
-      <td class='line'>62</td><td>&nbsp;</td>
+      <td class='line'>53</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    		{</pre></td>
     </tr>
     <tr>
-      <td class='line'>63</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l63s0'>    			myObject2.getTestMsg((Integer)any);</pre></td>
+      <td class='line'>54</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l54s0'>    			myObject2.getTestMsg((Integer)any);</pre></td>
     </tr>
     <tr>
-      <td class='line'>64</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l64s0'>    			result="haha";</pre></td>
+      <td class='line'>55</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l55s0'>    			result="haha";</pre></td>
     </tr>
     <tr>
-      <td class='line'>65</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    		}</pre></td>
+      <td class='line'>56</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l56s0'>    		}</pre></td>
     </tr>
     <tr>
-      <td class='line'>66</td><td>&nbsp;</td>
+      <td class='line'>57</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>		};</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>69</td><td>&nbsp;</td>
+      <td class='line'>60</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    	System.out.println(myObject2.getTestMsg(1));</pre></td>
     </tr>
     <tr>
-      <td class='line'>70</td><td>&nbsp;</td>
+      <td class='line'>61</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>72</td><td>&nbsp;</td>
+      <td class='line'>63</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    @Test</pre></td>
     </tr>
     <tr>
-      <td class='line'>73</td><td>&nbsp;</td>
+      <td class='line'>64</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    public void testInjectable(){</pre></td>
     </tr>
     <tr>
-      <td class='line'>74</td><td>&nbsp;</td>
+      <td class='line'>65</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    	myObject.getTestMsg(1);</pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>76</td><td>&nbsp;</td>
+      <td class='line'>67</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>    }</pre></td>
     </tr>
     <tr>
-      <td class='line'>77</td><td>&nbsp;</td>
+      <td class='line'>68</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>

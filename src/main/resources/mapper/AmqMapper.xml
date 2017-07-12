@@ -2,97 +2,97 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.taylor.dao.AmqDao">
-	<resultMap id="BaseResultMap" type="com.taylor.entity.AmqEntity">
-		<result column="id" property="id" jdbcType="BIGINT" />
-		<result column="mq_type" property="mqtype" jdbcType="BIGINT" />
-		<result column="message" property="message" jdbcType="VARCHAR" />
-	</resultMap>
-	<sql id="Base_Column_List">
-		t.id,
-		t.mq_type,
-		t.message
-	</sql>
-	<select id="findByCondition" resultMap="BaseResultMap">
-		SELECT
-		<include refid="Base_Column_List" />
-		FROM amq t
-		<where>
-			<if test="query.id !=null">
-				and id=#{query.id,jdbcType=BIGINT}
-			</if>
-			<if test="query.mqType !=null">
-				and mq_type=#{query.mqType,jdbcType=BIGINI}
-			</if>
-			<if test="query.message !=null">
-				and message=#{query.message,jdbcType=VARCHAR}
-			</if>
-		</where>
-	</select>
+    <resultMap id="BaseResultMap" type="com.taylor.entity.AmqEntity">
+        <result column="id" property="id" jdbcType="BIGINT"/>
+        <result column="mq_type" property="mqtype" jdbcType="BIGINT"/>
+        <result column="message" property="message" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        t.id,
+        t.mq_type,
+        t.message
+    </sql>
+    <select id="findByCondition" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM amq t
+        <where>
+            <if test="query.id !=null">
+                and id=#{query.id,jdbcType=BIGINT}
+            </if>
+            <if test="query.mqType !=null">
+                and mq_type=#{query.mqType,jdbcType=BIGINI}
+            </if>
+            <if test="query.message !=null">
+                and message=#{query.message,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 
-	<select id="findTotalCount" resultType="java.lang.Integer">
-		SELECT count(1) FROM amq t
-		<where>
-			<if test="query.id !=null">
-				and id=#{query.id,jdbcType=BIGINT}
-			</if>
-			<if test="query.mqType !=null">
-				and mq_tye=#{query.mqType,jdbcType=BIGINT}
-			</if>
-			<if test="query.message !=null">
-				and message=#{query.message,jdbcType=VARCHAR}
-			</if>
-		</where>
-	</select>
+    <select id="findTotalCount" resultType="java.lang.Integer">
+        SELECT count(1) FROM amq t
+        <where>
+            <if test="query.id !=null">
+                and id=#{query.id,jdbcType=BIGINT}
+            </if>
+            <if test="query.mqType !=null">
+                and mq_tye=#{query.mqType,jdbcType=BIGINT}
+            </if>
+            <if test="query.message !=null">
+                and message=#{query.message,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
 
-	<insert id="save" keyProperty="entity.id" keyColumn="id" useGeneratedKeys="true">
-		INSERT INTO amq(mq_type,message)
-		VALUES (
-		#{entity.mqType,jdbcType=BIGINT},
-		#{entity.message,jdbcType=VARCHAR}
-		)
-	</insert>
+    <insert id="save" keyProperty="entity.id" keyColumn="id" useGeneratedKeys="true">
+        INSERT INTO amq(mq_type,message)
+        VALUES (
+        #{entity.mqType,jdbcType=BIGINT},
+        #{entity.message,jdbcType=VARCHAR}
+        )
+    </insert>
 
-	<update id="update">
-		UPDATE amq
-		SET
-		message=#{entity.message,jdbcType=VARCHAR}
-		WHERE id = #{entity.id,jdbcType=BIGINT}
-	</update>
+    <update id="update">
+        UPDATE amq
+        SET
+        message=#{entity.message,jdbcType=VARCHAR}
+        WHERE id = #{entity.id,jdbcType=BIGINT}
+    </update>
 
-	<update id="updateByPrimaryKeySelective">
-		UPDATE amq
-		<set>
-			<if test="entity.message !=null">
-				name=#{entity,message,jdbcType=VARCHAR},
-			</if>
-			<if test="entity.mqType !=null">
-				mq_type=#{entity.mqType,jdbcType=BIGINT},
-			</if>
-		</set>
-		where id = #{entity.id,jdbcType=BIGINT}
-	</update>
+    <update id="updateByPrimaryKeySelective">
+        UPDATE amq
+        <set>
+            <if test="entity.message !=null">
+                name=#{entity,message,jdbcType=VARCHAR},
+            </if>
+            <if test="entity.mqType !=null">
+                mq_type=#{entity.mqType,jdbcType=BIGINT},
+            </if>
+        </set>
+        where id = #{entity.id,jdbcType=BIGINT}
+    </update>
 
-	<select id="getByPrimaryKey" resultMap="BaseResultMap">
-		SELECT
-		<include refid="Base_Column_List" />
-		FROM amq t
-		WHERE t.id = #{id,jdbcType=BIGINT}
-	</select>
+    <select id="getByPrimaryKey" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM amq t
+        WHERE t.id = #{id,jdbcType=BIGINT}
+    </select>
 
-	<select id="get" resultMap="BaseResultMap">
-		SELECT
-		<include refid="Base_Column_List" />
-		FROM amq t
-		WHERE id = #{entity.id,jdbcType=BIGINT}
-	</select>
+    <select id="get" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM amq t
+        WHERE id = #{entity.id,jdbcType=BIGINT}
+    </select>
 
-	<delete id="delByPrimaryKey">
-		DELETE FROM amq
-		WHERE id = #{id ,jdbcType=BIGINT}
-	</delete>
+    <delete id="delByPrimaryKey">
+        DELETE FROM amq
+        WHERE id = #{id ,jdbcType=BIGINT}
+    </delete>
 
-	<delete id="del">
-		DELETE FROM amq
-		WHERE id = #{entity.id,jdbcType=BIGINT}
-	</delete>
+    <delete id="del">
+        DELETE FROM amq
+        WHERE id = #{entity.id,jdbcType=BIGINT}
+    </delete>
 </mapper>

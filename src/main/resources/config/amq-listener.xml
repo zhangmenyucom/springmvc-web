@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jms="http://www.springframework.org/schema/jms" xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans    
- http://www.springframework.org/schema/beans/spring-beans-3.0.xsd    
- http://www.springframework.org/schema/context    
- http://www.springframework.org/schema/context/spring-context-3.0.xsd
- http://www.springframework.org/schema/jms
- http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
-	<bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
-		<property name="connectionFactory">
-			<ref bean="jmsConnectionFactory" />
-		</property>
-	</bean>
-	
-	<!-- topic监听器放在这里 -->
-	<jms:listener-container destination-type="topic"  connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager"  container-type="default">
-		<jms:listener destination="taylorTopic" ref="taylorTopicEventListener" method="onMessage" />
-	</jms:listener-container>
-	
-	<!-- queue监听器放在这里 -->
-	<jms:listener-container destination-type="queue" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager"  container-type="default" concurrency="${concurrency}">
-		<jms:listener destination="taylorQueue"  ref="taylorQueueEventListener" method="onMessage" />
-	</jms:listener-container>
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+         http://www.springframework.org/schema/jms
+         http://www.springframework.org/schema/jms/spring-jms-3.0.xsd">
+    <bean id="jmsTransactionManager" class="org.springframework.jms.connection.JmsTransactionManager">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+
+    <!--topic监听器放在这里-->
+    <jms:listener-container destination-type="topic" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager" container-type="default">
+        <jms:listener destination="taylorTopic" ref="taylorTopicEventListener" method="onMessage"/>
+    </jms:listener-container>
+    <!-- 定义Queue监听器 -->
+    <jms:listener-container destination-type="queue" container-type="default" connection-factory="jmsConnectionFactory" acknowledge="auto" transaction-manager="jmsTransactionManager">
+        <jms:listener destination="taylorQueue" ref="taylorQueueEventListener"  method="onMessage"/>
+    </jms:listener-container>
 </beans>

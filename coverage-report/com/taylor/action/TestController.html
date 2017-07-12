@@ -24,63 +24,159 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.taylor.amq.producer.SendMessage;
 import com.taylor.entity.TestEntity;
 import com.taylor.service.TestService;
 </div><span>import ...</span></pre></td>
     </tr>
     <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
-      <td class='line'>16</td><td>&nbsp;</td>
+      <td class='line'>19</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@RequestMapping("/test")</pre></td>
     </tr>
     <tr>
-      <td class='line'>17</td><td>&nbsp;</td>
+      <td class='line'>20</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>@Controller</pre></td>
     </tr>
     <tr>
-      <td class='line'>18</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l18s0'>public class TestController extends BaseAction {</pre></td>
-    </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
-    <tr>
-      <td class='line'>20</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    @Autowired</pre></td>
+      <td class='line'>21</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l21s0'>public class TestController extends BaseAction {</pre></td>
     </tr>
     <tr>
-      <td class='line'>21</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Autowired</pre></td>
     </tr>
-    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
     <tr>
       <td class='line'>23</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    @ResponseBody</pre></td>
+      <td><pre class='prettyprint'>	@Qualifier("sendQueueMessage")</pre></td>
     </tr>
     <tr>
       <td class='line'>24</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    @RequestMapping("/query")</pre></td>
+      <td><pre class='prettyprint'>	private SendMessage <span class='instance uncovered' title='Reads: 0 Writes: 0'>sendQueueMessage</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>26</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Autowired</pre></td>
     </tr>
     <tr>
-      <td class='line'>25</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    public List&lt;TestEntity> queryTest(TestEntity test, HttpServletRequest request, HttpServletResponse response) {</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>26</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l26s0'>        log.debug("这只是一个测试");</pre></td>
-    </tr>
-    <tr>
-      <td class='line'>27</td><td class='count'>0</td>
-      <td><pre class='prettyprint uncovered' id='l27s0'>        return testService.find(test);</pre></td>
+      <td class='line'>27</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Qualifier("sendTopicMessage")</pre></td>
     </tr>
     <tr>
       <td class='line'>28</td><td>&nbsp;</td>
-      <td><pre class='prettyprint'>    }</pre></td>
+      <td><pre class='prettyprint'>	private SendMessage <span class='instance uncovered' title='Reads: 0 Writes: 0'>sendTopicMessage</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>30</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Autowired</pre></td>
     </tr>
     <tr>
-      <td class='line'>29</td><td>&nbsp;</td>
+      <td class='line'>31</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private TestService <span class='instance uncovered' title='Reads: 0 Writes: 0'>testService</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@ResponseBody</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>35</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@RequestMapping("/query")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>36</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public List&lt;TestEntity> queryTest(TestEntity test, HttpServletRequest request, HttpServletResponse response) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>37</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l37s0'>		log.debug("这只是一个测试");</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>38</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l38s0'>		return testService.find(test);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>39</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * @desc sendQueue(发送消息队列)
+	 * @param message
+	 * @author xiaolu.zhang
+	 * @date 2017年3月2日 下午3:30:15
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>47</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@RequestMapping(value = "/queue/{message}")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>48</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@ResponseBody</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>49</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String sendQueue(@PathVariable("message") String message) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>50</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l50s0'>		sendQueueMessage.sendMessage(message);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>51</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l51s0'>		return "success";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>52</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td class='comment' onclick='showHideLines(this)'><div>	/**
+	 * @desc sendTopic(发送主题订阅)
+	 * @param message
+	 * @author xiaolu.zhang
+	 * @date 2017年3月2日 下午3:30:37
+	 */</div><span>	/*...*/</span></td>
+    </tr>
+    <tr>
+      <td class='line'>60</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@RequestMapping(value = "/topic/{message}")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>61</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@ResponseBody</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>62</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public String sendTopic(@PathVariable("message") String message) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>63</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l63s0'>		sendTopicMessage.sendMessage(message);</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>64</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l64s0'>		return "success";</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>65</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>66</td><td>&nbsp;</td>
       <td><pre class='prettyprint'>}</pre></td>
     </tr>
   </table>
