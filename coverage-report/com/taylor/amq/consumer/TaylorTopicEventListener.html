@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JMockit Coverage Report - TaylorTopicEventListener.java</title>
+  <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
+  <link rel='stylesheet' type='text/css' href='../../../../coverage.css'/>
+  <link rel='shortcut icon' type='image/png' href='../../../../logo.png'/>
+  <script type='text/javascript' src='../../../../coverage.js'></script>
+  <script type='text/javascript' src='../../../../prettify.js'></script>
+</head>
+<body onload='prettyPrint()'>
+  <table cellpadding='0' cellspacing='1'>
+    <caption>springmvc-web\src\main\java\com\taylor\amq\consumer\TaylorTopicEventListener.java</caption>
+    <tr>
+      <td class='line'>1</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>package com.taylor.amq.consumer;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'></td><td>&nbsp;</td>
+      <td><pre class='imports prettyprint' onclick='showHideLines(this)'><div>import javax.jms.JMSException;
+import javax.jms.Message;
+import javax.jms.MessageListener;
+import javax.jms.TextMessage;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+import com.taylor.common.MqTypeEnum;
+import com.taylor.entity.AmqEntity;
+import com.taylor.service.AmqService;
+</div><span>import ...</span></pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>16</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>@Component</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>17</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>@Qualifier("taylorTopicEventListener")</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>18</td><td class='count'>1</td>
+      <td><pre class='prettyprint covered' id='l18s0'>public class TaylorTopicEventListener implements MessageListener {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>19</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Autowired</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>20</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	private AmqService <span class='instance uncovered' title='Reads: 0 Writes: 0'>amqService</span>;</pre></td>
+    </tr>
+    <tr><td class='line'></td><td colspan='2'>&nbsp;</td></tr>
+    <tr>
+      <td class='line'>22</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	@Override</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>23</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>	public void onMessage(Message message) {</pre></td>
+    </tr>
+    <tr>
+      <td></td><td class='count'>0</td>
+      <td class='paths'>
+        <span style='cursor:default; background-color:#ff0000' onclick='hidePath()'>Path coverage: 0/2</span>
+        <span class='uncovered' onclick="showPath(this,'l24s0 l33s0')">A: 0</span>
+        <span class='uncovered' onclick="showPath(this,'l24s0 l26s0 l33s0')">B: 0</span>
+      </td>
+    </tr>
+    <tr>
+      <td class='line'>24</td><td class='count'>0</td>
+      <td><pre class='prettyprint jmp'>		<span id='l24s0' title='Executions: 0' class='uncovered'>if (message instanceof TextMessage)</span> <span id='l24s1' title='Executions: 0' class='uncovered'>{</span></pre></td>
+    </tr>
+    <tr>
+      <td class='line'>25</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>			try {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>26</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l26s0'>				TextMessage msg = (TextMessage) message;</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>27</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l27s0'>				amqService.save(new AmqEntity(MqTypeEnum.TOPIC.getKey(), msg.getText()));</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>28</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l28s0'>				System.out.println(msg.getText());</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>29</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l29s0'>			} catch (JMSException e) {</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>30</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l30s0'>				e.printStackTrace();</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>31</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l31s0'>			}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>32</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>		}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>33</td><td class='count'>0</td>
+      <td><pre class='prettyprint uncovered' id='l33s0'>	}</pre></td>
+    </tr>
+    <tr>
+      <td class='line'>34</td><td>&nbsp;</td>
+      <td><pre class='prettyprint'>}</pre></td>
+    </tr>
+  </table>
+</body>
+</html>
