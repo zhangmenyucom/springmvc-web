@@ -237,11 +237,11 @@
 				<log.file.home>D:/logs/logback</log.file.home>
 				<jdbc.url>
 					<![CDATA[
-					jdbc:mysql://localhost:3306/log_demo?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
+					jdbc:mysql://localhost:3306/log_demo?useSSL=false&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
 					]]>
 				</jdbc.url>
 				<jdbc.username>root</jdbc.username>
-				<jdbc.password>110110</jdbc.password>
+				<jdbc.password>ilovemysql^^</jdbc.password>
 				<war.dir>D:/Javaee/mypackage</war.dir>
 			</properties>
 		</profile>
@@ -252,7 +252,7 @@
 				<log.file.home>/usr/apps/logs/log-demo/logback</log.file.home>
 				<jdbc.url>
 					<![CDATA[
-					jdbc:mysql://192.168.186.128:3306/log_demo?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
+					jdbc:mysql://192.168.186.128:3306/log_demo?useSSL=false&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
 					]]>
 				</jdbc.url>
 				<jdbc.username>root</jdbc.username>
@@ -267,7 +267,7 @@
 				<log.file.home>/usr/apps/logs/log-demo/logback</log.file.home>
 				<jdbc.url>
 					<![CDATA[
-					jdbc:mysql://localhost:3306/log_demo?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
+					jdbc:mysql://localhost:3306/log_demo?useSSL=false&amp;createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf8
 					]]>
 				</jdbc.url>
 				<jdbc.username>root</jdbc.username>
