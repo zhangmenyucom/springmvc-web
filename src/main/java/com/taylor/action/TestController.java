@@ -1,5 +1,6 @@
 package com.taylor.action;
 
+import com.taylor.annotation.TestAnnotation;
 import com.taylor.common.JSONUtil;
 import com.taylor.common.SpringBeanUtils;
 import com.taylor.entity.TestEntity;
@@ -13,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+/**
+ * @author taylor
+ */
 @RequestMapping("/test")
 @Controller
 public class TestController extends BaseAction {
@@ -26,11 +30,12 @@ public class TestController extends BaseAction {
         log.debug("这只是一个测试");
         return testService.find(test);
     }
-    
+
     @ResponseBody
     @RequestMapping("/tf")
-    public String testFactory(){
+    public String testFactory() {
         Object demo = SpringBeanUtils.getBean("demo");
+        testService.test();
         return JSONUtil.toJSONString(demo);
     }
 }
