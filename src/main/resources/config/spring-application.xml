@@ -15,4 +15,5 @@
         <!-- 设置上传文件的最大尺寸为10MB -->
         <property name="maxUploadSize" value="10000000"/>
     </bean>
+    <bean id="SpringBeanUtils" class="com.taylor.common.SpringBeanUtils"/>
 </beans>
