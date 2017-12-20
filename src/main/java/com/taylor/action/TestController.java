@@ -36,6 +36,7 @@ public class TestController extends BaseAction {
     public String testFactory() {
         Object demo = SpringBeanUtils.getBean("demo");
         testService.test();
+        System.out.println("12312321222222222222222");
         return JSONUtil.toJSONString(demo);
     }
 }
