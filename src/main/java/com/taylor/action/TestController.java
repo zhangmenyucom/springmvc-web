@@ -23,7 +23,7 @@ public class TestController extends BaseAction {
     @ResponseBody
     @RequestMapping("/query")
     public List<TestEntity> queryTest(TestEntity test, HttpServletRequest request, HttpServletResponse response) {
-        log.debug("这只是一个测试");
+        log.debug("这只是一个测试12132132");
         return testService.find(test);
     }
     
