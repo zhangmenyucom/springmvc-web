@@ -50,16 +50,6 @@
 		WHERE id = #{entity.id,jdbcType=BIGINT}
 	</update>
 
-	<update id="updateByPrimaryKeySelective">
-		UPDATE test
-		<set>
-			<if test="entity.name !=null">
-				name=#{entity.name,jdbcType=VARCHAR},
-			</if>
-		</set>
-		where id = #{entity.id,jdbcType=BIGINT}
-	</update>
-
 	<select id="getByPrimaryKey" resultMap="BaseResultMap">
 		SELECT
 		<include refid="Base_Column_List" />

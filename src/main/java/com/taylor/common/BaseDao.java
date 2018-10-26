@@ -13,21 +13,19 @@ import tk.mybatis.mapper.common.Mapper;
  */
 public interface BaseDao<Entity, Query> extends Mapper<Entity> {
 
-    public Entity get(@Param(value = "entity") Entity entity);
+    Entity get(@Param("entity") Entity entity);
 
-    public Entity getByPrimaryKey(@Param(value = "id") Object id);
+    Entity getByPrimaryKey(@Param("id") Object id);
 
-    public List<Entity> findByCondition(@Param(value = "query") Query query);
+    List<Entity> findByCondition(@Param("query") Query query);
 
-    public Integer findTotalCount(@Param(value = "query") Query query);
+    Integer findTotalCount(@Param("query") Query query);
 
-    public int save(@Param(value = "entity") Entity entity);
+    int save(@Param("entity") Entity entity);
 
-    public int update(@Param(value = "entity") Entity entity);
+    int update(@Param("entity") Entity entity);
 
-    public int del(@Param(value = "entity") Entity entity);
+    int del(@Param("entity") Entity entity);
 
-    public int delByPrimaryKey(@Param(value = "id") Object id);
-
-    public int updateByPrimaryKeySelective(@Param(value = "entity") Entity entity);
+    int delByPrimaryKey(@Param("id") Object id);
 }

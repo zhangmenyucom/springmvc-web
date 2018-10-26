@@ -1,52 +1,62 @@
 package com.taylor.common;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Collections;
 import java.util.List;
 
-public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Entity, Query>> extends BaseService<Entity, Query, Dao> implements CrudService<Entity, Query> {
 
+/**
+ * @author Taylor
+ */
+public abstract class BaseServiceImpl<Entity, Query, Dao extends BaseDao<Entity, Query>> implements BaseService<Entity, Query> {
+
+    @Autowired
+    private Dao dao;
+
+    public Dao getDao() {
+        return this.dao;
+    }
 
     @Override
     public Entity save(Entity entity) {
         if (entity == null) {
-            throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(),RETURN_CODE.ARGS_EMPTY.getMsg());
+            throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
         }
         this.getDao().save(entity);
         return entity;
     }
-    
+
     @Override
-    public Entity update(Entity entity) {
+    public int update(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
         }
-        this.getDao().update(entity);
-        return entity;
+        return this.getDao().update(entity);
     }
 
     @Override
-    public Entity updateByPrimaryKeySelective(Entity entity) {
+    public int updateByPrimaryKeySelective(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
         }
-        this.getDao().updateByPrimaryKeySelective(entity);
-        return entity;
+        return this.getDao().updateByPrimaryKeySelective(entity);
     }
 
     @Override
-    public void del(Entity entity) {
+    public int del(Entity entity) {
         if (entity == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
         }
-        this.getDao().del(entity);
+        return this.getDao().del(entity);
     }
 
     @Override
-    public void delByPrimaryKey(Object id) {
+    public int delByPrimaryKey(Object id) {
         if (id == null) {
             throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), RETURN_CODE.ARGS_EMPTY.getMsg());
         }
-        this.getDao().delByPrimaryKey(id);
+        return this.getDao().delByPrimaryKey(id);
     }
 
     @Override
@@ -61,6 +71,7 @@ public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Ent
         }
         return this.getDao().get(entity);
     }
+
     @Override
     public Entity getByPrimaryKey(Object id) {
         return this.getDao().getByPrimaryKey(id);
@@ -79,11 +90,18 @@ public abstract class AbstractCrudService<Entity, Query, Dao extends BaseDao<Ent
     }
 
     @Override
-    public int findTotalCount(Query query) {
+    public Integer findTotalCount(Query query) {
         if (query == null) {
-            throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), "鏌ヨ鏉′欢瀵硅薄涓虹┖");
+            throw new ManagerException(RETURN_CODE.ARGS_EMPTY.getCode(), "参数错误");
         }
         Integer total = this.getDao().findTotalCount(query);
         return total == null ? 0 : total;
     }
+
+    @Override
+    public List<Entity> findByCondition(Query query) {
+        return this.getDao().findByCondition(query);
+    }
+
+
 }

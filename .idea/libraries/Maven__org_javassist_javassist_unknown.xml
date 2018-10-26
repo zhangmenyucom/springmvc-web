@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.javassist:javassist:unknown">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/javassist/javassist/unknown/javassist-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.m2/repository/org/javassist/javassist/unknown/javassist-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.m2/repository/org/javassist/javassist/unknown/javassist-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

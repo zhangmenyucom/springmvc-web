@@ -1,16 +1,31 @@
 package com.taylor.common;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
-public abstract class BaseService<Entity, Query, Dao extends BaseDao<Entity, Query>> {
-    
-    @Autowired
-    private Dao dao;
+/**
+ * @author Taylor
+ */
+public interface BaseService<Entity, Query> {
 
-    public Dao getDao() {
-        return dao;
-    }
-    public void setDao(Dao dao) {
-        this.dao = dao;
-    }
+    boolean exist(Entity entity);
+
+    Entity get(Entity entity);
+
+    Entity getByPrimaryKey(Object id);
+
+    List<Entity> findByCondition(Query query);
+
+    List<Entity> find(Query query);
+
+    Integer findTotalCount(Query query);
+
+    Entity save(Entity entity);
+
+    int update(Entity entity);
+
+    int updateByPrimaryKeySelective(Entity entity);
+
+    int del(Entity entity);
+
+    int delByPrimaryKey(Object id);
 }
